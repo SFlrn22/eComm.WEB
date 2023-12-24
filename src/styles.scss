@@ -1,4 +1,25 @@
-/* You can add global styles to this file, and also import other style files */
+@use "@angular/material" as mat;
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+.small-icon {
+  height: 20px !important;
+}
+.medium-icon {
+  height: 40px !important;
+}
+.left-side {
+  margin-left: 2em;
+}
+.right-side {
+  margin-right: 2em;
+}
+.form-wrapper {
+  margin-left: 5em;
+}

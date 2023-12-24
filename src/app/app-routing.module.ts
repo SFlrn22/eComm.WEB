@@ -23,6 +23,8 @@ const routes: Routes = [
         (m) => m.DetailsPageModule
       ),
   },
+  { path: 'unauthorized', loadChildren: () => import('./pages/unauthorized-page/unauthorized-page.module').then(m => m.UnauthorizedPageModule) },
+  { path: 'administration', loadChildren: () => import('./pages/admin-page/admin-page.module').then(m => m.AdminPageModule) },
 ];
 
 @NgModule({
