@@ -1,17 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { MatGridListModule } from '@angular/material/grid-list';
 import { MainPageRoutingModule } from './main-page-routing.module';
 import { MainPageComponent } from './main-page.component';
-
-
+import { ComponentsSharedModule } from '../../shared/components-shared.module';
 @NgModule({
-  declarations: [
-    MainPageComponent
-  ],
+  declarations: [MainPageComponent],
   imports: [
     CommonModule,
-    MainPageRoutingModule
-  ]
+    MainPageRoutingModule,
+    ComponentsSharedModule,
+    MatGridListModule,
+  ],
 })
-export class MainPageModule { }
+export class MainPageModule {}

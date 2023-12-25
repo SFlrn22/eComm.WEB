@@ -13,8 +13,8 @@ import { ComponentsSharedModule } from './shared/components-shared.module';
   declarations: [AppComponent],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     BrowserAnimationsModule,
+    AppRoutingModule,
     ComponentsSharedModule,
   ],
   providers: [provideClientHydration()],

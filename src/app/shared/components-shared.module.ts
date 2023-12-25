@@ -6,9 +6,10 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { FooterComponent } from './footer-component/footer-component.component';
+import { CarouselComponent } from './carousel/carousel.component';
 
 @NgModule({
-  declarations: [NavbarComponent, FooterComponent],
+  declarations: [NavbarComponent, FooterComponent, CarouselComponent],
   imports: [
     CommonModule,
     MatFormFieldModule,
@@ -16,6 +17,6 @@ import { FooterComponent } from './footer-component/footer-component.component';
     MatSelectModule,
     MatIconModule,
   ],
-  exports: [NavbarComponent, FooterComponent],
+  exports: [NavbarComponent, FooterComponent, CarouselComponent],
 })
 export class ComponentsSharedModule {}
