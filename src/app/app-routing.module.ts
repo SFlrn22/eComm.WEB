@@ -3,6 +3,11 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
+    path: '',
+    redirectTo: '/main',
+    pathMatch: 'full',
+  },
+  {
     path: 'main',
     loadChildren: () =>
       import('./pages/main-page/main-page.module').then(
@@ -23,8 +28,20 @@ const routes: Routes = [
         (m) => m.DetailsPageModule
       ),
   },
-  { path: 'unauthorized', loadChildren: () => import('./pages/unauthorized-page/unauthorized-page.module').then(m => m.UnauthorizedPageModule) },
-  { path: 'administration', loadChildren: () => import('./pages/admin-page/admin-page.module').then(m => m.AdminPageModule) },
+  {
+    path: 'unauthorized',
+    loadChildren: () =>
+      import('./pages/unauthorized-page/unauthorized-page.module').then(
+        (m) => m.UnauthorizedPageModule
+      ),
+  },
+  {
+    path: 'administration',
+    loadChildren: () =>
+      import('./pages/admin-page/admin-page.module').then(
+        (m) => m.AdminPageModule
+      ),
+  },
 ];
 
 @NgModule({

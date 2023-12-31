@@ -7,9 +7,15 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { FooterComponent } from './footer-component/footer-component.component';
 import { CarouselComponent } from './carousel/carousel.component';
+import { ItemCarouselComponent } from './item-carousel/item-carousel.component';
 
 @NgModule({
-  declarations: [NavbarComponent, FooterComponent, CarouselComponent],
+  declarations: [
+    NavbarComponent,
+    FooterComponent,
+    CarouselComponent,
+    ItemCarouselComponent,
+  ],
   imports: [
     CommonModule,
     MatFormFieldModule,
@@ -17,6 +23,11 @@ import { CarouselComponent } from './carousel/carousel.component';
     MatSelectModule,
     MatIconModule,
   ],
-  exports: [NavbarComponent, FooterComponent, CarouselComponent],
+  exports: [
+    NavbarComponent,
+    FooterComponent,
+    CarouselComponent,
+    ItemCarouselComponent,
+  ],
 })
 export class ComponentsSharedModule {}

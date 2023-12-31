@@ -1,0 +1,95 @@
+.w-100 {
+  width: 100% !important;
+}
+
+.container {
+  width: 95em;
+  display: flex;
+  position: relative;
+  justify-content: center;
+}
+
+.cards {
+  width: calc(100% - 80px);
+  overflow: hidden;
+}
+
+.overflow {
+  position: relative;
+  transition: left 0.5s ease-in-out;
+}
+
+.carousel-card {
+  height: 335px;
+  background-color: #e0e1e2;
+  border-radius: 5px;
+  display: inline-block;
+  margin-right: 10px;
+  position: relative;
+}
+
+.left,
+.right {
+  height: 2em;
+  width: 2em;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  border-left: 0.25em solid rgba(255, 82, 39, 0.753);
+  border-bottom: 0.25em solid rgba(255, 82, 39, 0.753);
+}
+
+.left.disabled,
+.right.disabled {
+  border-color: #ccc;
+}
+
+.left {
+  left: 0;
+  transform: rotate(45deg);
+}
+
+.right {
+  right: 0;
+  transform: rotate(225deg);
+}
+.card-img-top {
+  height: 200px;
+  object-fit: contain;
+}
+.card {
+  height: 100%;
+}
+.card-body {
+  padding-top: 4px;
+  padding-left: 16px;
+  padding-right: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.card-bottom {
+  justify-self: flex-end;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.shopping-cart {
+  background-color: transparent;
+  border: none;
+}
+
+.bi-cart:hover {
+  color: grey;
+}
+.heart-icon {
+  position: absolute;
+  background-color: white;
+  width: 22px;
+  margin: 10px;
+  border-radius: 10px;
+}
+
+.card-price {
+  margin: 0;
+}
