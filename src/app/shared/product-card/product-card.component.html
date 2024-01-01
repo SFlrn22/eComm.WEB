@@ -1,0 +1,29 @@
+<div class="card">
+  <div class="heart-icon">
+    <i
+      (click)="isFavorite = !isFavorite"
+      [ngClass]="isFavorite ? 'bi bi-heart h5' : 'bi bi-heart-fill h5'"
+    ></i>
+  </div>
+  <img
+    class="card-img-top"
+    src="{{ productDetails.url }}"
+    alt="Card image cap"
+  />
+  <div class="card-body">
+    <h5 class="card-title">{{ productDetails.name }}</h5>
+    <h4 class="card-price">{{ productDetails.price }}$</h4>
+    <div class="card-bottom">
+      <div class="star-ratings">
+        <span class="bi bi-star-fill"></span>
+        <span class="bi bi-star-fill"></span>
+        <span class="bi bi-star-fill"></span>
+        <span class="bi bi-star"></span>
+        <span class="bi bi-star"></span>
+      </div>
+      <button class="shopping-cart">
+        <i class="bi bi-cart h2"></i>
+      </button>
+    </div>
+  </div>
+</div>

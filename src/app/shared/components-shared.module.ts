@@ -8,6 +8,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { FooterComponent } from './footer-component/footer-component.component';
 import { CarouselComponent } from './carousel/carousel.component';
 import { ItemCarouselComponent } from './item-carousel/item-carousel.component';
+import { ProductCardComponent } from './product-card/product-card.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { ItemCarouselComponent } from './item-carousel/item-carousel.component';
     FooterComponent,
     CarouselComponent,
     ItemCarouselComponent,
+    ProductCardComponent,
   ],
   imports: [
     CommonModule,
@@ -28,6 +30,7 @@ import { ItemCarouselComponent } from './item-carousel/item-carousel.component';
     FooterComponent,
     CarouselComponent,
     ItemCarouselComponent,
+    ProductCardComponent,
   ],
 })
 export class ComponentsSharedModule {}

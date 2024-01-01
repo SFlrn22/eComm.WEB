@@ -7,6 +7,7 @@ import {
   Injectable,
   ViewChild,
 } from '@angular/core';
+import { Product } from '../../core/Models/Product';
 
 @Component({
   selector: 'app-item-carousel',
@@ -17,6 +18,63 @@ import {
 export class ItemCarouselComponent {
   constructor(@Inject(DOCUMENT) private document: Document) {}
   arr: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+  products: Product[] = [
+    {
+      name: 'abc',
+      price: 24,
+      url: 'https://lcdn.altex.ro/resize/media/catalog/product/v/i/2bd48d28d1c32adea0e55139a4e6434a/vivobook_go_15_mixed_black_non_fingerprint_non_backlit_1_971cf4ba.jpg',
+    },
+    {
+      name: 'abc',
+      price: 24,
+      url: 'https://lcdn.altex.ro/resize/media/catalog/product/v/i/2bd48d28d1c32adea0e55139a4e6434a/vivobook_go_15_mixed_black_non_fingerprint_non_backlit_1_971cf4ba.jpg',
+    },
+    {
+      name: 'abc',
+      price: 24,
+      url: 'https://lcdn.altex.ro/resize/media/catalog/product/v/i/2bd48d28d1c32adea0e55139a4e6434a/vivobook_go_15_mixed_black_non_fingerprint_non_backlit_1_971cf4ba.jpg',
+    },
+    {
+      name: 'abc',
+      price: 24,
+      url: 'https://lcdn.altex.ro/resize/media/catalog/product/v/i/2bd48d28d1c32adea0e55139a4e6434a/vivobook_go_15_mixed_black_non_fingerprint_non_backlit_1_971cf4ba.jpg',
+    },
+    {
+      name: 'abc',
+      price: 24,
+      url: 'https://lcdn.altex.ro/resize/media/catalog/product/v/i/2bd48d28d1c32adea0e55139a4e6434a/vivobook_go_15_mixed_black_non_fingerprint_non_backlit_1_971cf4ba.jpg',
+    },
+    {
+      name: 'abc',
+      price: 24,
+      url: 'https://lcdn.altex.ro/resize/media/catalog/product/v/i/2bd48d28d1c32adea0e55139a4e6434a/vivobook_go_15_mixed_black_non_fingerprint_non_backlit_1_971cf4ba.jpg',
+    },
+    {
+      name: 'abc',
+      price: 24,
+      url: 'https://lcdn.altex.ro/resize/media/catalog/product/v/i/2bd48d28d1c32adea0e55139a4e6434a/vivobook_go_15_mixed_black_non_fingerprint_non_backlit_1_971cf4ba.jpg',
+    },
+    {
+      name: 'abc',
+      price: 24,
+      url: 'https://lcdn.altex.ro/resize/media/catalog/product/v/i/2bd48d28d1c32adea0e55139a4e6434a/vivobook_go_15_mixed_black_non_fingerprint_non_backlit_1_971cf4ba.jpg',
+    },
+    {
+      name: 'abc',
+      price: 24,
+      url: 'https://lcdn.altex.ro/resize/media/catalog/product/v/i/2bd48d28d1c32adea0e55139a4e6434a/vivobook_go_15_mixed_black_non_fingerprint_non_backlit_1_971cf4ba.jpg',
+    },
+    {
+      name: 'abc',
+      price: 24,
+      url: 'https://lcdn.altex.ro/resize/media/catalog/product/v/i/2bd48d28d1c32adea0e55139a4e6434a/vivobook_go_15_mixed_black_non_fingerprint_non_backlit_1_971cf4ba.jpg',
+    },
+    {
+      name: 'abc',
+      price: 24,
+      url: 'https://lcdn.altex.ro/resize/media/catalog/product/v/i/2bd48d28d1c32adea0e55139a4e6434a/vivobook_go_15_mixed_black_non_fingerprint_non_backlit_1_971cf4ba.jpg',
+    },
+  ];
   totalCards: number = this.arr.length;
   currentPage: number = 1;
   pagePosition: string = '0%';
