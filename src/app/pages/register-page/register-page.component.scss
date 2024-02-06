@@ -1,0 +1,33 @@
+.page-container {
+  height: calc(100% - 110px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.borderless-button {
+  border: 0;
+  background-color: transparent;
+
+  mat-icon {
+    padding-right: 40px;
+  }
+}
+
+.register-form {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 20vw;
+  height: 45vh;
+  .form-fields {
+    display: flex;
+    gap: 15px;
+    flex-direction: column;
+  }
+}
+mat-form-field {
+  width: 15vw !important;
+}

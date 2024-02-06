@@ -1,1 +1,47 @@
-<p>register-page works!</p>
+<div class="page-container">
+  <form class="register-form" (ngSubmit)="onSubmit()">
+    <div class="form-fields">
+      <mat-form-field appearance="outline">
+        <mat-label>Enter your email</mat-label>
+        <input
+          matInput
+          placeholder="pat@example.com"
+          [formControl]="email"
+          required
+        />
+        @if (email.invalid) {
+        <mat-error>{{ getEmailErrorMessage() }}</mat-error>
+        }
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Enter your Username</mat-label>
+        <input matInput [formControl]="user" required />
+        @if (user.invalid) {
+        <mat-error>{{ getUserErrorMessage() }}</mat-error>
+        }
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Enter your password</mat-label>
+        <input
+          matInput
+          [formControl]="password"
+          [type]="hide ? 'password' : 'text'"
+        />
+        <button
+          mat-icon-button
+          matSuffix
+          (click)="hide = !hide"
+          [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide"
+          class="borderless-button"
+        >
+          <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+        </button>
+        @if (password.invalid) {
+        <mat-error>{{ getPassErrorMessage() }}</mat-error>
+        }
+      </mat-form-field>
+    </div>
+    <button mat-raised-button type="submit" class="submit-btn">Register</button>
+  </form>
+</div>

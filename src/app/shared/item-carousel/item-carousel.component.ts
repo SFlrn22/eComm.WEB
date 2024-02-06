@@ -7,7 +7,7 @@ import {
   Injectable,
   ViewChild,
 } from '@angular/core';
-import { Product } from '../../core/Models/Product';
+import { Product } from '../../core/models/Product';
 
 @Component({
   selector: 'app-item-carousel',
