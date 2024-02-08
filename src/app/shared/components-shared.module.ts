@@ -9,6 +9,7 @@ import { FooterComponent } from './footer-component/footer-component.component';
 import { CarouselComponent } from './carousel/carousel.component';
 import { ItemCarouselComponent } from './item-carousel/item-carousel.component';
 import { ProductCardComponent } from './product-card/product-card.component';
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { ProductCardComponent } from './product-card/product-card.component';
     MatInputModule,
     MatSelectModule,
     MatIconModule,
+    MatMenuModule,
   ],
   exports: [
     NavbarComponent,

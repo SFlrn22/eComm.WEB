@@ -41,13 +41,19 @@
         </div>
       </form>
       <div class="right-side">
-        <button class="btn" type="button">
+        <button mat-button [matMenuTriggerFor]="menu" class="btn" type="button">
           <i class="bi bi-person-circle h2"></i>
         </button>
-        <button class="btn" type="button">
+        <mat-menu #menu="matMenu">
+          <ng-template matMenuContent>
+            <a mat-menu-item href="/login">Log In</a>
+            <a mat-menu-item href="/register">Sign Up</a>
+          </ng-template>
+        </mat-menu>
+        <button class="btn" type="button" *ngIf="isAuthenticated">
           <i class="bi bi-cart-fill h2"></i>
         </button>
-        <button class="btn" type="button">
+        <button class="btn" type="button" *ngIf="isAuthenticated">
           <i class="bi bi-heart-fill h2 heart-icon"></i>
         </button>
       </div>

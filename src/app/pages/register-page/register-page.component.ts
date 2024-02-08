@@ -1,40 +1,32 @@
-import { Component } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-register-page',
   templateUrl: './register-page.component.html',
   styleUrl: './register-page.component.scss',
 })
-export class RegisterPageComponent {
+export class RegisterPageComponent implements OnInit {
   hide: boolean = true;
-  user = new FormControl('', Validators.required);
-  password = new FormControl('', Validators.required);
-  email = new FormControl('', [Validators.required, Validators.email]);
+  registerForm: FormGroup | any = null;
+  constructor(private location: Location) {}
+
+  ngOnInit(): void {
+    this.registerForm = new FormGroup({
+      username: new FormControl('', Validators.required),
+      password: new FormControl('', Validators.required),
+      email: new FormControl('', [Validators.required, Validators.email]),
+    });
+  }
 
   onSubmit(): void {
-    console.log(this.user.value + ' ' + this.password.value);
+    if (this.registerForm.valid) {
+      console.log(this.registerForm.value);
+    }
   }
 
-  getEmailErrorMessage() {
-    if (this.email.hasError('required')) {
-      return 'You must enter a valid email address';
-    }
-
-    return this.email.hasError('email') ? 'Not a valid email' : '';
-  }
-
-  getUserErrorMessage() {
-    if (this.user.hasError('required')) {
-      return 'You must enter an username';
-    }
-    return '';
-  }
-
-  getPassErrorMessage() {
-    if (this.password.hasError('required')) {
-      return 'You must enter a password';
-    }
-    return '';
+  clickBack() {
+    this.location.back();
   }
 }

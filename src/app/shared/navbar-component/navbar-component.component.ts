@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
+import { CookieHelperService } from '../../core/services/cookie-helper-service/cookie-helper.service';
 
 @Component({
   selector: 'app-navbar-component',
@@ -7,10 +8,15 @@ import { NavigationEnd, Router } from '@angular/router';
   styleUrl: './navbar-component.component.scss',
 })
 export class NavbarComponent {
-  constructor(private router: Router) {
+  constructor(
+    private router: Router,
+    private cookieService: CookieHelperService
+  ) {
     this.DetermineNavbarUsage();
   }
+  isAuthenticated: boolean = false;
   useNavbar: boolean = true;
+
   public DetermineNavbarUsage() {
     this.router.events.subscribe((event: any) => {
       if (
@@ -20,5 +26,11 @@ export class NavbarComponent {
         this.useNavbar = false;
       }
     });
+  }
+
+  public CheckAuth() {
+    this.isAuthenticated == true
+      ? this.cookieService.getCookies('jwt') != undefined || null
+      : false;
   }
 }
