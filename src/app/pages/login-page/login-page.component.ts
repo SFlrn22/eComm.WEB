@@ -36,12 +36,7 @@ export class LoginPageComponent implements OnInit {
       this.authService.getToken(this.loginForm.value).subscribe((data: any) => {
         if (data.authToken != undefined || null) {
           this.cookieHelper.setCookies('jwt', data.authToken);
-          this.snackBarService.openSnackBar(
-            'You are now logged in',
-            'Close',
-            'success'
-          );
-          this.router.navigate(['main']).then(() => {
+          this.router.navigateByUrl('main').then(() => {
             window.location.reload();
           });
         } else {

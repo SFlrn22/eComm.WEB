@@ -1,9 +1,4 @@
-import {
-  AfterViewInit,
-  Component,
-  OnChanges,
-  SimpleChanges,
-} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { CookieHelperService } from '../../core/services/cookie-helper-service/cookie-helper.service';
 
@@ -12,12 +7,14 @@ import { CookieHelperService } from '../../core/services/cookie-helper-service/c
   templateUrl: './navbar-component.component.html',
   styleUrl: './navbar-component.component.scss',
 })
-export class NavbarComponent {
+export class NavbarComponent implements OnInit {
   constructor(
     private router: Router,
     private cookieService: CookieHelperService
   ) {
     this.DetermineNavbarUsage();
+  }
+  ngOnInit(): void {
     this.CheckAuth();
   }
 
