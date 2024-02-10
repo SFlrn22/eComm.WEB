@@ -1,4 +1,9 @@
-import { Component } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  OnChanges,
+  SimpleChanges,
+} from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { CookieHelperService } from '../../core/services/cookie-helper-service/cookie-helper.service';
 
@@ -13,7 +18,9 @@ export class NavbarComponent {
     private cookieService: CookieHelperService
   ) {
     this.DetermineNavbarUsage();
+    this.CheckAuth();
   }
+
   isAuthenticated: boolean = false;
   useNavbar: boolean = true;
 
@@ -29,8 +36,14 @@ export class NavbarComponent {
   }
 
   public CheckAuth() {
-    this.isAuthenticated == true
-      ? this.cookieService.getCookies('jwt') != undefined || null
-      : false;
+    var jwt = this.cookieService.getCookies('jwt');
+    this.isAuthenticated = true ? jwt != '' : false;
+  }
+
+  public Logout() {
+    this.cookieService.removeAllCookies();
+    this.router.navigateByUrl('/main').then(() => {
+      window.location.reload();
+    });
   }
 }

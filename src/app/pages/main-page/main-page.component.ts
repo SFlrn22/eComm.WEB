@@ -1,4 +1,9 @@
-import { Component } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  OnChanges,
+  SimpleChanges,
+} from '@angular/core';
 import { Product } from '../../core/models/Product';
 
 @Component({

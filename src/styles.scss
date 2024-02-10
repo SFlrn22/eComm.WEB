@@ -27,3 +27,25 @@ body {
 .form-wrapper {
   margin-left: 5em;
 }
+.snackbar-success {
+  .mdc-snackbar__surface {
+    background: rgb(2, 148, 56) !important;
+  }
+  .mdc-button__label {
+    color: whitesmoke !important;
+  }
+  .mdc-snackbar__label {
+    color: whitesmoke !important;
+  }
+}
+.snackbar-error {
+  .mdc-snackbar__surface {
+    background: rgb(212, 6, 6) !important;
+  }
+  .mdc-button__label {
+    color: whitesmoke !important;
+  }
+  .mdc-snackbar__label {
+    color: whitesmoke !important;
+  }
+}

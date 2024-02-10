@@ -46,8 +46,13 @@
         </button>
         <mat-menu #menu="matMenu">
           <ng-template matMenuContent>
-            <a mat-menu-item href="/login">Log In</a>
-            <a mat-menu-item href="/register">Sign Up</a>
+            <a mat-menu-item href="/login" *ngIf="!isAuthenticated">Log In</a>
+            <a mat-menu-item href="/register" *ngIf="!isAuthenticated"
+              >Sign Up</a
+            >
+            <a mat-menu-item (click)="Logout()" *ngIf="isAuthenticated"
+              >Log Out</a
+            >
           </ng-template>
         </mat-menu>
         <button class="btn" type="button" *ngIf="isAuthenticated">
