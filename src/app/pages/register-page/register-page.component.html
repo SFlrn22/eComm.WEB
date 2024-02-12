@@ -19,9 +19,10 @@
       <mat-form-field appearance="outline">
         <mat-label>Enter your Username</mat-label>
         <input matInput formControlName="username" required />
-        <mat-error *ngIf="registerForm.controls.user.errors?.['required']">{{
-          "You must enter an username"
-        }}</mat-error>
+        <mat-error
+          *ngIf="registerForm.controls.username.errors?.['required']"
+          >{{ "You must enter an username" }}</mat-error
+        >
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>Enter your password</mat-label>
@@ -40,13 +41,19 @@
         >
           <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
         </button>
-        <mat-error *ngIf="registerForm.controls.email.errors?.['required']">{{
-          "You must enter a password"
-        }}</mat-error>
+        <mat-error
+          *ngIf="registerForm.controls.password.errors?.['required']"
+          >{{ "You must enter a password" }}</mat-error
+        >
       </mat-form-field>
     </div>
     <div class="buttons-div">
-      <button mat-raised-button type="submit" class="submit-btn">
+      <button
+        mat-raised-button
+        type="submit"
+        class="submit-btn"
+        (click)="onSubmit()"
+      >
         Register
       </button>
       <button mat-raised-button (click)="clickBack()">Back</button>

@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Location } from '@angular/common';
 import { AuthService } from '../../core/services/auth-service/auth.service';
-import { AuthResponse } from '../../core/models/AuthResponse';
 import { CookieHelperService } from '../../core/services/cookie-helper-service/cookie-helper.service';
 import { Router } from '@angular/router';
 import { SnackbarService } from '../../core/services/snackbar-service/snackbar.service';
@@ -34,11 +33,20 @@ export class LoginPageComponent implements OnInit {
   onSubmit(): void {
     if (this.loginForm.valid) {
       this.authService.getToken(this.loginForm.value).subscribe((data: any) => {
-        if (data.authToken != undefined || null) {
-          this.cookieHelper.setCookies('jwt', data.authToken);
-          this.router.navigateByUrl('main').then(() => {
-            window.location.reload();
-          });
+        if (data.data.token != undefined || null) {
+          this.cookieHelper.setCookies('jwt', data.data.token);
+          this.snackBarService.openSnackBar(
+            'Logare realizata cu success, vei fi redirectat catre pagina de start',
+            'Close',
+            'success'
+          );
+          setTimeout(
+            () =>
+              this.router.navigateByUrl('main').then(() => {
+                window.location.reload();
+              }),
+            1500
+          );
         } else {
           this.snackBarService.openSnackBar(data.message, 'Close', 'error');
         }
