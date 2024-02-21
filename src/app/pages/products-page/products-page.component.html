@@ -1,1 +1,62 @@
-<p>products-page works!</p>
+<div class="page-container">
+  <div class="options-bar">
+    <form class="form-wrapper">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text">
+            <mat-icon
+              class="small-icon"
+              (click)="stopRecording()"
+              *ngIf="isRecording"
+              >volume_off</mat-icon
+            >
+            <mat-icon
+              class="small-icon"
+              (click)="startRecording()"
+              *ngIf="!isRecording"
+              >volume_up</mat-icon
+            >
+            <mat-icon class="small-icon">search</mat-icon>
+          </span>
+        </div>
+        <input
+          class="form-control border-end-0 border-right-0 border search-input"
+          type="search"
+          placeholder="Start your search here"
+          id="search-input"
+        />
+      </div>
+    </form>
+    <div class="fields-wrapper">
+      <mat-form-field style="width: 120px">
+        <mat-label>SortingBy</mat-label>
+        <mat-select style="font-size: 13px">
+          <mat-option value="asc">Price</mat-option>
+          <mat-option value="desc">Popularity</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field style="width: 120px">
+        <mat-label>SortingType</mat-label>
+        <mat-select style="font-size: 13px">
+          <mat-option value="asc">Ascending</mat-option>
+          <mat-option value="desc">Descending</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field style="width: 120px">
+        <mat-label>Brand</mat-label>
+        <mat-select style="font-size: 13px">
+          <mat-option value="b1">b1</mat-option>
+          <mat-option value="b2">b2</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field style="width: 120px">
+        <mat-label>Category</mat-label>
+        <mat-select style="font-size: 13px">
+          <mat-option value="c1">Cat1</mat-option>
+          <mat-option value="c2">Cat2</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="products-grid"></div>
+</div>
