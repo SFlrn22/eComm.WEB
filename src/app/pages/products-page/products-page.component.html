@@ -27,36 +27,30 @@
         />
       </div>
     </form>
-    <div class="fields-wrapper">
-      <mat-form-field style="width: 120px">
-        <mat-label>SortingBy</mat-label>
-        <mat-select style="font-size: 13px">
-          <mat-option value="asc">Price</mat-option>
-          <mat-option value="desc">Popularity</mat-option>
-        </mat-select>
-      </mat-form-field>
-      <mat-form-field style="width: 120px">
-        <mat-label>SortingType</mat-label>
-        <mat-select style="font-size: 13px">
-          <mat-option value="asc">Ascending</mat-option>
-          <mat-option value="desc">Descending</mat-option>
-        </mat-select>
-      </mat-form-field>
-      <mat-form-field style="width: 120px">
-        <mat-label>Brand</mat-label>
-        <mat-select style="font-size: 13px">
-          <mat-option value="b1">b1</mat-option>
-          <mat-option value="b2">b2</mat-option>
-        </mat-select>
-      </mat-form-field>
-      <mat-form-field style="width: 120px">
-        <mat-label>Category</mat-label>
-        <mat-select style="font-size: 13px">
-          <mat-option value="c1">Cat1</mat-option>
-          <mat-option value="c2">Cat2</mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div>
   </div>
-  <div class="products-grid"></div>
+  <div class="products-grid">
+    <app-product-card [productDetails]="products[1]"></app-product-card>
+    <app-product-card [productDetails]="products[1]"></app-product-card>
+    <app-product-card [productDetails]="products[1]"></app-product-card>
+    <app-product-card [productDetails]="products[1]"></app-product-card>
+    <app-product-card [productDetails]="products[1]"></app-product-card>
+    <app-product-card [productDetails]="products[1]"></app-product-card>
+    <app-product-card [productDetails]="products[1]"></app-product-card>
+    <app-product-card [productDetails]="products[1]"></app-product-card>
+    <app-product-card [productDetails]="products[1]"></app-product-card>
+    <app-product-card [productDetails]="products[1]"></app-product-card>
+  </div>
+  <div class="pagination-container">
+    <ul class="pagination pagination-md justify-content-center">
+      <li class="page-item">
+        <button class="page-link" disabled>Previous</button>
+      </li>
+      <li class="page-item"><button class="page-link">1</button></li>
+      <li class="page-item"><button class="page-link">2</button></li>
+      <li class="page-item"><button class="page-link">3</button></li>
+      <li class="page-item">
+        <button class="page-link">Next</button>
+      </li>
+    </ul>
+  </div>
 </div>

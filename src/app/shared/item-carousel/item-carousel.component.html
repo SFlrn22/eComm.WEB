@@ -18,11 +18,11 @@
         <app-product-card [productDetails]="i"></app-product-card>
       </div>
     </div>
-    <div
-      class="right"
-      *ngIf="totalPages > 1"
-      (click)="currentPage != totalPages && changePage(+1)"
-      [ngClass]="{ disabled: currentPage === totalPages }"
-    ></div>
   </div>
+  <div
+    class="right"
+    *ngIf="totalPages > 1"
+    (click)="currentPage != totalPages && changePage(+1)"
+    [ngClass]="{ disabled: currentPage === totalPages }"
+  ></div>
 </div>
