@@ -4,52 +4,38 @@
       <div class="input-group">
         <div class="input-group-prepend">
           <span class="input-group-text">
-            <mat-icon
-              class="small-icon"
-              (click)="stopRecording()"
-              *ngIf="isRecording"
-              >volume_off</mat-icon
-            >
-            <mat-icon
-              class="small-icon"
-              (click)="startRecording()"
-              *ngIf="!isRecording"
-              >volume_up</mat-icon
-            >
+            <mat-icon class="small-icon" (click)="stopRecording()" *ngIf="isRecording">volume_off</mat-icon>
+            <mat-icon class="small-icon" (click)="startRecording()" *ngIf="!isRecording">volume_up</mat-icon>
             <mat-icon class="small-icon">search</mat-icon>
           </span>
         </div>
-        <input
-          class="form-control border-end-0 border-right-0 border search-input"
-          type="search"
-          placeholder="Start your search here"
-          id="search-input"
-        />
+        <input class="form-control border-end-0 border-right-0 border search-input" type="search"
+          placeholder="Start your search here" id="search-input" />
       </div>
     </form>
   </div>
   <div class="products-grid">
-    <app-product-card [productDetails]="products[1]"></app-product-card>
-    <app-product-card [productDetails]="products[1]"></app-product-card>
-    <app-product-card [productDetails]="products[1]"></app-product-card>
-    <app-product-card [productDetails]="products[1]"></app-product-card>
-    <app-product-card [productDetails]="products[1]"></app-product-card>
-    <app-product-card [productDetails]="products[1]"></app-product-card>
-    <app-product-card [productDetails]="products[1]"></app-product-card>
-    <app-product-card [productDetails]="products[1]"></app-product-card>
-    <app-product-card [productDetails]="products[1]"></app-product-card>
-    <app-product-card [productDetails]="products[1]"></app-product-card>
   </div>
   <div class="pagination-container">
     <ul class="pagination pagination-md justify-content-center">
       <li class="page-item">
-        <button class="page-link" disabled>Previous</button>
+        <input type="button" class="btn btn-dark shadow-none" (click)="previous()" [disabled]="isDisabledPrev"
+          value="Previous" />
       </li>
-      <li class="page-item"><button class="page-link">1</button></li>
-      <li class="page-item"><button class="page-link">2</button></li>
-      <li class="page-item"><button class="page-link">3</button></li>
       <li class="page-item">
-        <button class="page-link">Next</button>
+        <input id="button1" type="button" class="btn btn-light shadow-none" [value]="pageNumbers[0]"
+          [ngClass]="{'active': isActive[0]}" (click)="paginationButtonClicked(1)" />
+      </li>
+      <li class="page-item">
+        <input id="button2" type="button" class="btn btn-light shadow-none" [value]="pageNumbers[1]"
+          [ngClass]="{'active': isActive[1]}" (click)="paginationButtonClicked(2)" />
+      </li>
+      <li class="page-item">
+        <input id="button3" type="button" class="btn btn-light shadow-none" [value]="pageNumbers[2]"
+          [ngClass]="{'active': isActive[2]}" (click)="paginationButtonClicked(3)" />
+      </li>
+      <li class="page-item">
+        <input type="button" class="btn btn-dark shadow-none" (click)="next()" value="Next" />
       </li>
     </ul>
   </div>

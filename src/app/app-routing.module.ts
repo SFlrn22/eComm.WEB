@@ -42,8 +42,20 @@ const routes: Routes = [
         (m) => m.AdminPageModule
       ),
   },
-  { path: 'register', loadChildren: () => import('./pages/register-page/register-page.module').then(m => m.RegisterPageModule) },
-  { path: 'login', loadChildren: () => import('./pages/login-page/login-page.module').then(m => m.LoginPageModule) },
+  {
+    path: 'register',
+    loadChildren: () =>
+      import('./pages/register-page/register-page.module').then(
+        (m) => m.RegisterPageModule
+      ),
+  },
+  {
+    path: 'login',
+    loadChildren: () =>
+      import('./pages/login-page/login-page.module').then(
+        (m) => m.LoginPageModule
+      ),
+  },
 ];
 
 @NgModule({

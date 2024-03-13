@@ -10,6 +10,7 @@ import { CarouselComponent } from './carousel/carousel.component';
 import { ItemCarouselComponent } from './item-carousel/item-carousel.component';
 import { ProductCardComponent } from './product-card/product-card.component';
 import { MatMenuModule } from '@angular/material/menu';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { MatMenuModule } from '@angular/material/menu';
     MatSelectModule,
     MatIconModule,
     MatMenuModule,
+    RouterModule,
   ],
   exports: [
     NavbarComponent,

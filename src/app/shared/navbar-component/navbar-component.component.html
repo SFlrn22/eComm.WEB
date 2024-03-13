@@ -1,27 +1,18 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary" [hidden]="!useNavbar">
   <div class="container-fluid">
     <a class="navbar-brand font-weight-bold" href="/main">Project ECAI</a>
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div
-      class="collapse navbar-collapse justify-content-between"
-      id="navbarSupportedContent"
-    >
+    <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
       <div class="navbar-nav mb-2 mb-lg-0">
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="/main">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/products">Products</a>
+          <a class="nav-link" [routerLink]="['/products']"
+            [queryParams]="{ pageNumber: 0, itemsPerPage: 10}">Products</a>
         </li>
       </div>
       <div class="right-side">
@@ -31,12 +22,8 @@
         <mat-menu #menu="matMenu">
           <ng-template matMenuContent>
             <a mat-menu-item href="/login" *ngIf="!isAuthenticated">Log In</a>
-            <a mat-menu-item href="/register" *ngIf="!isAuthenticated"
-              >Sign Up</a
-            >
-            <a mat-menu-item (click)="Logout()" *ngIf="isAuthenticated"
-              >Log Out</a
-            >
+            <a mat-menu-item href="/register" *ngIf="!isAuthenticated">Sign Up</a>
+            <a mat-menu-item (click)="Logout()" *ngIf="isAuthenticated">Log Out</a>
           </ng-template>
         </mat-menu>
         <button class="btn" type="button" *ngIf="isAuthenticated">
