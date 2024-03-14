@@ -2,16 +2,18 @@ import {
   AfterViewInit,
   Component,
   OnChanges,
+  OnInit,
   SimpleChanges,
 } from '@angular/core';
 import { Product } from '../../core/models/Product';
+import { ProductService } from '../../core/services/product-service/product.service';
 
 @Component({
   selector: 'app-main-page',
   templateUrl: './main-page.component.html',
   styleUrl: './main-page.component.scss',
 })
-export class MainPageComponent {
+export class MainPageComponent implements OnInit {
   public slides = [
     {
       src: 'https://www.channelengine.com/hubfs/Blogs/2023-08/AI%20Ecommerce.jpg',
@@ -26,4 +28,15 @@ export class MainPageComponent {
       src: 'https://www.hostgator.com/blog/wp-content/uploads/2021/12/create-coupon-strategy-for-ecommerce-store.jpeg',
     },
   ];
+
+  topTenProducts: Product[] = [];
+
+  constructor(private productService: ProductService) {}
+
+  ngOnInit(): void {
+    this.productService.getTopTen().subscribe((data: Product[]) => {
+      console.log(data);
+      this.topTenProducts = data;
+    });
+  }
 }

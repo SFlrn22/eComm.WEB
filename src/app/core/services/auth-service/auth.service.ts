@@ -10,6 +10,7 @@ import { RegisterRequest } from '../../models/RegisterRequest';
 })
 export class AuthService {
   apiUrl: string = environment.apiUrl;
+
   constructor(private http: HttpClient) {}
 
   getToken(credentials: AuthRequest): any {

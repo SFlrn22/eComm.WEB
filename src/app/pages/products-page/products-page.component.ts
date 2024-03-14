@@ -8,6 +8,7 @@ import {
 import { RecordingService } from '../../core/services/recording-service/recording.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Product } from '../../core/models/Product';
+import { ProductService } from '../../core/services/product-service/product.service';
 @Component({
   selector: 'app-products-page',
   templateUrl: './products-page.component.html',
@@ -16,14 +17,17 @@ import { Product } from '../../core/models/Product';
 export class ProductsPageComponent implements OnInit {
   numberOfPages: number = 0;
   pageNumber: number = 0;
-  itemsPerPage: number = 12;
+  itemsPerPage: number = 10;
   isRecording: boolean = false;
   pageNumbers: number[] = [1, 2, 3];
   isActive: boolean[] = [true, false, false];
   isDisabledPrev: boolean = true;
   isDisabledNext: boolean = false;
 
+  productList: Product[] = [];
+
   constructor(
+    private productService: ProductService,
     private recordingService: RecordingService,
     private route: ActivatedRoute,
     private router: Router
@@ -31,8 +35,10 @@ export class ProductsPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.queryParams.subscribe((params: Params) => {
-      // TODO: apel la api cu parametrii
-      console.log('change');
+      this.productService.getProducts(params).subscribe((data: any) => {
+        this.numberOfPages = data.data.productCount / this.itemsPerPage;
+        this.productList = data.data.productList;
+      });
     });
   }
 
@@ -52,7 +58,7 @@ export class ProductsPageComponent implements OnInit {
     var position = this.isActive.indexOf(true);
 
     if (position == 2) {
-      this.pageNumbers = this.pageNumbers.map((page) => page + 2);
+      this.pageNumbers = this.pageNumbers.map((page) => page + 3);
       if ((this.pageNumber = this.numberOfPages)) {
         this.isDisabledNext = true;
       } else {
@@ -83,7 +89,7 @@ export class ProductsPageComponent implements OnInit {
     var position = this.isActive.indexOf(true);
 
     if (position == 0) {
-      this.pageNumbers = this.pageNumbers.map((page) => page - 2);
+      this.pageNumbers = this.pageNumbers.map((page) => page - 3);
       this.isActive[position] = false;
       this.isActive[2] = true;
     } else {

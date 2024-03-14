@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Location } from '@angular/common';
-import { AuthService } from '../../core/services/auth-service/auth.service';
 import { CookieHelperService } from '../../core/services/cookie-helper-service/cookie-helper.service';
 import { Router } from '@angular/router';
 import { SnackbarService } from '../../core/services/snackbar-service/snackbar.service';
+import { AuthService } from '../../core/services/auth-service/auth.service';
 
 @Component({
   selector: 'app-login-page',

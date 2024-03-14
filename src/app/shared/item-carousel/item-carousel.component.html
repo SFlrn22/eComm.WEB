@@ -1,28 +1,13 @@
 <div class="container" #container>
-  <div
-    class="left"
-    *ngIf="totalPages > 1"
-    (click)="currentPage != 1 && changePage(-1)"
-    [ngClass]="{ disabled: currentPage === 1 }"
-  ></div>
+  <div class="left" *ngIf="totalPages > 1" (click)="currentPage != 1 && changePage(-1)"
+    [ngClass]="{ disabled: currentPage === 1 }"></div>
   <div class="cards" [ngClass]="{ 'w-100': totalPages === 1 }">
-    <div
-      class="overflow"
-      [ngStyle]="{ width: overflowWidth, left: pagePosition }"
-    >
-      <div
-        class="carousel-card"
-        *ngFor="let i of products; let index = index"
-        [ngStyle]="{ width: cardWidth }"
-      >
+    <div class="overflow" [ngStyle]="{ width: overflowWidth, left: pagePosition }">
+      <div class="carousel-card" *ngFor="let i of products; let index = index" [ngStyle]="{ width: cardWidth }">
         <app-product-card [productDetails]="i"></app-product-card>
       </div>
     </div>
   </div>
-  <div
-    class="right"
-    *ngIf="totalPages > 1"
-    (click)="currentPage != totalPages && changePage(+1)"
-    [ngClass]="{ disabled: currentPage === totalPages }"
-  ></div>
+  <div class="right" *ngIf="totalPages > 1" (click)="currentPage != totalPages && changePage(+1)"
+    [ngClass]="{ disabled: currentPage === totalPages }"></div>
 </div>

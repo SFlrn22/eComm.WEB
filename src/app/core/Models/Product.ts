@@ -1,5 +1,7 @@
 export interface Product {
-  name: string;
-  price: number;
-  url: string;
+  title: string;
+  author: number;
+  publisher: string;
+  publicationYear: string;
+  imageUrlM: string;
 }
