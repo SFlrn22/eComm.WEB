@@ -1,14 +1,10 @@
-import {
-  AfterViewInit,
-  Component,
-  OnChanges,
-  OnInit,
-  SimpleChanges,
-} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RecordingService } from '../../core/services/recording-service/recording.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Product } from '../../core/models/Product';
 import { ProductService } from '../../core/services/product-service/product.service';
+import { FormControl, FormGroup } from '@angular/forms';
+
 @Component({
   selector: 'app-products-page',
   templateUrl: './products-page.component.html',
@@ -24,6 +20,8 @@ export class ProductsPageComponent implements OnInit {
   isDisabledPrev: boolean = true;
   isDisabledNext: boolean = false;
 
+  searchForm: FormGroup | any = null;
+
   productList: Product[] = [];
 
   constructor(
@@ -34,10 +32,25 @@ export class ProductsPageComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.searchForm = new FormGroup({
+      title: new FormControl(''),
+    });
     this.route.queryParams.subscribe((params: Params) => {
       this.productService.getProducts(params).subscribe((data: any) => {
         this.numberOfPages = data.data.productCount / this.itemsPerPage;
         this.productList = data.data.productList;
+
+        for (let i = 0; i < this.pageNumbers.length; i++) {
+          if (
+            this.isActive[i] == true &&
+            this.pageNumbers[i] == Math.ceil(this.numberOfPages)
+          ) {
+            this.isDisabledNext = true;
+            break;
+          } else {
+            this.isDisabledNext = false;
+          }
+        }
       });
     });
   }
@@ -48,7 +61,7 @@ export class ProductsPageComponent implements OnInit {
         pageNumber: this.pageNumbers[btnNumber - 1],
         itemsPerPage: this.itemsPerPage,
       },
-      queryParamsHandling: '',
+      queryParamsHandling: 'merge',
     });
     this.isActive = this.isActive.map(() => false);
     this.isActive[btnNumber - 1] = true;
@@ -108,6 +121,17 @@ export class ProductsPageComponent implements OnInit {
       queryParamsHandling: '',
     });
   }
+
+  search() {
+    this.router.navigate(['/products'], {
+      queryParams: {
+        filterColumn: 'Title',
+        filterValue: this.searchForm.value['title'],
+      },
+      queryParamsHandling: 'merge',
+    });
+  }
+
   startRecording() {
     this.isRecording = true;
     this.recordingService.StartRecording();

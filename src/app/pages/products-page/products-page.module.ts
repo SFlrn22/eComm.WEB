@@ -8,7 +8,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { ComponentsSharedModule } from '../../shared/components-shared.module';
 
@@ -25,6 +25,7 @@ import { ComponentsSharedModule } from '../../shared/components-shared.module';
     FormsModule,
     MatInputModule,
     ComponentsSharedModule,
+    ReactiveFormsModule,
   ],
 })
 export class ProductsPageModule {}
