@@ -20,6 +20,40 @@ export class ProductService {
     return this.http.get<Product[]>(this.apiUrl + '/Recommender/GetTopTen');
   }
 
+  getItemBasedRecommendations(queryParams: Params): any {
+    var headers_object = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: 'Bearer ' + this.cookieHelper.getCookies('jwt'),
+    });
+
+    const httpOptions = {
+      headers: headers_object,
+      queryParams: queryParams,
+    };
+
+    return this.http.get<Product[]>(
+      this.apiUrl + '/Recommender/ItemBased',
+      httpOptions
+    );
+  }
+
+  getContentBasedRecommendations(queryParams: Params): any {
+    var headers_object = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: 'Bearer ' + this.cookieHelper.getCookies('jwt'),
+    });
+
+    const httpOptions = {
+      headers: headers_object,
+      queryParams: queryParams,
+    };
+
+    return this.http.get<Product[]>(
+      this.apiUrl + '/Recommender/ContentBased',
+      httpOptions
+    );
+  }
+
   getProducts(queryParams: Params): any {
     return this.http.get<Product[]>(this.apiUrl + '/GetProducts', {
       params: queryParams,

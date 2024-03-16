@@ -1,0 +1,58 @@
+<div class="page-container">
+    <div class="product-container">
+        <div class="product-picture">
+            <img src="http://images.amazon.com/images/P/0195153448.01.LZZZZZZZ.jpg" alt="image" class="product-img">
+        </div>
+        <div class="product-details">
+            <h2 class="title">Classical Mythology</h2>
+            <div class="product-ratings">
+                <span class="bi bi-star-fill"></span>
+                <span class="bi bi-star-fill"></span>
+                <span class="bi bi-star-fill"></span>
+                <span class="bi bi-star"></span>
+                <span class="bi bi-star"></span>
+                <span class="rating-value">3</span>
+            </div>
+            <div class="product-detail">
+                <h2 class="info">About this book</h2>
+                <p class="isbn">ISBN: 0195153448</p>
+                <p class="author">Author: Mark P. O. Morford</p>
+                <p class="publisher">Publisher: Oxford University Press</p>
+                <p class="publicationYear">Year of publication: 2002</p>
+                <p class="category">Category: Test</p>
+                <h2 class="description-header">Description</h2>
+                <p class="description">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
+                    Ipsum has been the industry's standard
+                    dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to
+                    make
+                    a type specimen
+                    book. It has survived not only five centuries, but also the leap into electronic typesetting,
+                    remaining
+                    essentially
+                    unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem
+                    Ipsum
+                    passages, and more
+                    recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                </p>
+            </div>
+            <p class="price">Price: $21</p>
+            <div class="purchase">
+                <select class="narrow">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
+                <button type="button">Add to Cart</button>
+                <button type="compare">Compare</button>
+            </div>
+        </div>
+    </div>
+    <div class="recommendations-container">
+        <h2 class="recom-title">Item based recommendations</h2>
+        <app-item-carousel [products]="itemBasedRecommendations"></app-item-carousel>
+        <h2 class="recom-title">Content based recommendations</h2>
+        <app-item-carousel [products]="contentBasedRecommendations"></app-item-carousel>
+    </div>
+</div>

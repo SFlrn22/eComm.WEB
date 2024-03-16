@@ -56,6 +56,13 @@ const routes: Routes = [
         (m) => m.LoginPageModule
       ),
   },
+  {
+    path: 'product/:isbn',
+    loadChildren: () =>
+      import('./pages/product-page/product-page.module').then(
+        (m) => m.ProductPageModule
+      ),
+  },
 ];
 
 @NgModule({
