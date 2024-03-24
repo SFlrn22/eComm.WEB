@@ -18,6 +18,7 @@ import { Product } from '../../core/models/Product';
 @Injectable()
 export class ItemCarouselComponent {
   @Input() products: any;
+  @Input() favorites: any;
   totalCards: number = 10;
   currentPage: number = 1;
   pagePosition: string = '0%';
@@ -71,5 +72,9 @@ export class ItemCarouselComponent {
     this.pagePosition = `calc(${-100 * (this.currentPage - 1)}% - ${
       10 * (this.currentPage - 1)
     }px)`;
+  }
+
+  isFavorite(product: any): boolean {
+    return this.favorites.some((favorite: string) => favorite === product.isbn);
   }
 }

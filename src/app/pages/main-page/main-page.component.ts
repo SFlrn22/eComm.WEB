@@ -7,6 +7,7 @@ import {
 } from '@angular/core';
 import { Product } from '../../core/models/Product';
 import { ProductService } from '../../core/services/product-service/product.service';
+import { FavoriteService } from '../../core/services/favorite-service/favorite.service';
 
 @Component({
   selector: 'app-main-page',
@@ -30,13 +31,20 @@ export class MainPageComponent implements OnInit {
   ];
 
   topTenProducts: Product[] = [];
+  favoritesISBN: string[] = [];
 
-  constructor(private productService: ProductService) {}
+  constructor(
+    private productService: ProductService,
+    private favoriteService: FavoriteService
+  ) {}
 
   ngOnInit(): void {
     this.productService.getTopTen().subscribe((data: Product[]) => {
-      console.log(data);
       this.topTenProducts = data;
+    });
+
+    this.favoriteService.getFavorites().subscribe((data: any) => {
+      this.favoritesISBN = data.data;
     });
   }
 }

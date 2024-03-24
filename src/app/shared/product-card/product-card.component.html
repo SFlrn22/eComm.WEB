@@ -1,6 +1,6 @@
 <div class="card">
   <div class="heart-icon">
-    <i (click)="isFavorite = !isFavorite" [ngClass]="isFavorite ? 'bi bi-heart h5' : 'bi bi-heart-fill h5'"></i>
+    <i (click)="handleFavoriteClick()" [ngClass]="!isFavorite ? 'bi bi-heart h5' : 'bi bi-heart-fill h5'"></i>
   </div>
   <img class="card-img-top" src="{{ productDetails.imageUrlM }}" alt="Card image cap" />
   <div class="card-body">

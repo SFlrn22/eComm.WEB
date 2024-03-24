@@ -11,6 +11,7 @@ import { ItemCarouselComponent } from './item-carousel/item-carousel.component';
 import { ProductCardComponent } from './product-card/product-card.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { RouterModule } from '@angular/router';
+import { FavoriteProductComponent } from './favorite-product-component/favorite-product.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { RouterModule } from '@angular/router';
     CarouselComponent,
     ItemCarouselComponent,
     ProductCardComponent,
+    FavoriteProductComponent,
   ],
   imports: [
     CommonModule,
@@ -35,6 +37,7 @@ import { RouterModule } from '@angular/router';
     CarouselComponent,
     ItemCarouselComponent,
     ProductCardComponent,
+    FavoriteProductComponent,
   ],
 })
 export class ComponentsSharedModule {}

@@ -1,0 +1,13 @@
+html {
+  scroll-behavior: smooth;
+}
+
+.page-container {
+  height: calc(100% - 110px);
+  overflow-y: scroll;
+  line-height: 1.5;
+}
+
+.favorites-wrapper {
+  padding-bottom: 4rem;
+}

@@ -1,7 +1,7 @@
 export interface Product {
   isbn: string;
   title: string;
-  author: number;
+  author: string;
   publisher: string;
   publicationYear: string;
   imageUrlM: string;

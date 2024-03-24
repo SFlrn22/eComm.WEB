@@ -4,6 +4,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Product } from '../../core/models/Product';
 import { ProductService } from '../../core/services/product-service/product.service';
 import { FormControl, FormGroup } from '@angular/forms';
+import { FavoriteService } from '../../core/services/favorite-service/favorite.service';
 
 @Component({
   selector: 'app-products-page',
@@ -23,9 +24,11 @@ export class ProductsPageComponent implements OnInit {
   searchForm: FormGroup | any = null;
 
   productList: Product[] = [];
+  favorites: string[] = [];
 
   constructor(
     private productService: ProductService,
+    private favoriteService: FavoriteService,
     private recordingService: RecordingService,
     private route: ActivatedRoute,
     private router: Router
@@ -52,6 +55,9 @@ export class ProductsPageComponent implements OnInit {
           }
         }
       });
+    });
+    this.favoriteService.getFavorites().subscribe((data: any) => {
+      this.favorites = data.data;
     });
   }
 
@@ -140,5 +146,9 @@ export class ProductsPageComponent implements OnInit {
   stopRecording() {
     const blob = this.recordingService.StopRecording();
     this.isRecording = false;
+  }
+
+  isFavorite(product: any): boolean {
+    return this.favorites.some((favorite: string) => favorite === product.isbn);
   }
 }

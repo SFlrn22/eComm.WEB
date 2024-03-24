@@ -1,10 +1,10 @@
 <div class="page-container">
     <div class="product-container">
         <div class="product-picture">
-            <img src="http://images.amazon.com/images/P/0195153448.01.LZZZZZZZ.jpg" alt="image" class="product-img">
+            <img src="{{productInfo?.imageUrlM}}" alt="image" class="product-img">
         </div>
         <div class="product-details">
-            <h2 class="title">Classical Mythology</h2>
+            <h2 class="title">{{productInfo?.title}}</h2>
             <div class="product-ratings">
                 <span class="bi bi-star-fill"></span>
                 <span class="bi bi-star-fill"></span>
@@ -15,10 +15,10 @@
             </div>
             <div class="product-detail">
                 <h2 class="info">About this book</h2>
-                <p class="isbn">ISBN: 0195153448</p>
-                <p class="author">Author: Mark P. O. Morford</p>
-                <p class="publisher">Publisher: Oxford University Press</p>
-                <p class="publicationYear">Year of publication: 2002</p>
+                <p class="isbn">{{productInfo?.isbn}}</p>
+                <p class="author">{{productInfo?.author}}</p>
+                <p class="publisher">{{productInfo?.publisher}}</p>
+                <p class="publicationYear">{{productInfo?.publicationYear}}</p>
                 <p class="category">Category: Test</p>
                 <h2 class="description-header">Description</h2>
                 <p class="description">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem

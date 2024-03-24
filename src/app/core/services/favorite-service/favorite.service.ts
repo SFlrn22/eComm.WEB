@@ -1,15 +1,13 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../../../environments/environment.development';
-import { Product } from '../../models/Product';
-import { Params } from '@angular/router';
-import { CookieHelperService } from '../cookie-helper-service/cookie-helper.service';
 import { AddToFavoritesRequest } from '../../models/AddToFavoritesRequest';
+import { CookieHelperService } from '../cookie-helper-service/cookie-helper.service';
 
 @Injectable({
   providedIn: 'root',
 })
-export class ProductService {
+export class FavoriteService {
   apiUrl: string = environment.apiUrl;
 
   constructor(
@@ -17,11 +15,7 @@ export class ProductService {
     private cookieHelper: CookieHelperService
   ) {}
 
-  getTopTen(): any {
-    return this.http.get<Product[]>(this.apiUrl + '/Recommender/GetTopTen');
-  }
-
-  getItemBasedRecommendations(queryParams: Params): any {
+  getFavoritesInfo(): any {
     var headers_object = new HttpHeaders({
       'Content-Type': 'application/json',
       Authorization: 'Bearer ' + this.cookieHelper.getCookies('jwt'),
@@ -29,39 +23,14 @@ export class ProductService {
 
     const httpOptions = {
       headers: headers_object,
-      params: queryParams,
     };
-
-    return this.http.get<Product[]>(
-      this.apiUrl + '/Recommender/ItemBased/',
+    return this.http.get<any>(
+      this.apiUrl + '/GetFavoriteProductsInformation',
       httpOptions
     );
   }
 
-  getContentBasedRecommendations(queryParams: Params): any {
-    var headers_object = new HttpHeaders({
-      'Content-Type': 'application/json',
-      Authorization: 'Bearer ' + this.cookieHelper.getCookies('jwt'),
-    });
-
-    const httpOptions = {
-      headers: headers_object,
-      params: queryParams,
-    };
-
-    return this.http.get<Product[]>(
-      this.apiUrl + '/Recommender/ContentBased',
-      httpOptions
-    );
-  }
-
-  getProducts(queryParams: Params): any {
-    return this.http.get<Product[]>(this.apiUrl + '/GetProducts', {
-      params: queryParams,
-    });
-  }
-
-  getProductByTitle(body: any): any {
+  getFavorites(): any {
     var headers_object = new HttpHeaders({
       'Content-Type': 'application/json',
       Authorization: 'Bearer ' + this.cookieHelper.getCookies('jwt'),
@@ -70,10 +39,21 @@ export class ProductService {
     const httpOptions = {
       headers: headers_object,
     };
+    return this.http.get<any>(this.apiUrl + '/GetFavorites', httpOptions);
+  }
 
-    return this.http.post<Product[]>(
-      this.apiUrl + '/GetProductByName',
-      body,
+  addToFavorites(request: AddToFavoritesRequest) {
+    var headers_object = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: 'Bearer ' + this.cookieHelper.getCookies('jwt'),
+    });
+
+    const httpOptions = {
+      headers: headers_object,
+    };
+    return this.http.post<any>(
+      this.apiUrl + '/FavoriteHandler',
+      request,
       httpOptions
     );
   }

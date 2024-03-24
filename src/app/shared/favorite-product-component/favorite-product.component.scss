@@ -1,0 +1,36 @@
+.card-wrapper {
+  display: flex;
+  flex-wrap: wrap !important;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2rem;
+  padding: 5px;
+}
+
+.information-wrapper {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  border-top: 1px solid #f0f0f0;
+}
+
+.primary {
+  flex: 1;
+}
+
+.secondary {
+  flex: 0 0 170px;
+  padding: 0 0 0 10px;
+  text-align: right;
+  border-left: 1px solid #f0f0f0;
+}
+
+.product-img {
+  flex: 0 0 180px;
+}
+
+@media screen and (min-width: 992px) {
+  .information-wrapper {
+    flex: 0.4;
+  }
+}

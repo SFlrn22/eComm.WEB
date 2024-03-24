@@ -26,9 +26,24 @@ export class ProductPageComponent implements OnInit {
         filterColumn: 'ISBN',
         filterValue: this.isbn,
       };
-      // this.productService.getProducts(queryParams).subscribe((data: any) => {
-      //   this.productInfo = data.data.productList[0];
-      // });
+      this.productService.getProducts(queryParams).subscribe((data: any) => {
+        this.productInfo = data.data.productList[0];
+      });
+
+      const queryParamsRec = {
+        isbn: this.isbn,
+      };
+
+      // this.productService
+      //   .getItemBasedRecommendations(queryParamsRec)
+      //   .subscribe((data: any) => {
+      //     this.itemBasedRecommendations = data;
+      //   });
+      this.productService
+        .getContentBasedRecommendations(queryParamsRec)
+        .subscribe((data: any) => {
+          this.contentBasedRecommendations = data;
+        });
     });
   }
 }

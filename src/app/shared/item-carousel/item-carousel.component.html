@@ -4,7 +4,7 @@
   <div class="cards" [ngClass]="{ 'w-100': totalPages === 1 }">
     <div class="overflow" [ngStyle]="{ width: overflowWidth, left: pagePosition }">
       <div class="carousel-card" *ngFor="let i of products; let index = index" [ngStyle]="{ width: cardWidth }">
-        <app-product-card [productDetails]="i"></app-product-card>
+        <app-product-card [productDetails]="i" [isFavorite]="isFavorite(i)"></app-product-card>
       </div>
     </div>
   </div>
