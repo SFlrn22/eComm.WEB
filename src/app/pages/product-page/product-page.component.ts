@@ -13,7 +13,7 @@ export class ProductPageComponent implements OnInit {
   productInfo: Product | null = null;
   itemBasedRecommendations: Product[] = [];
   contentBasedRecommendations: Product[] = [];
-
+  qrCodeValue: string = 'https://isbnsearch.org/isbn/';
   constructor(
     private activeRoute: ActivatedRoute,
     private productService: ProductService
@@ -22,6 +22,7 @@ export class ProductPageComponent implements OnInit {
   ngOnInit(): void {
     this.activeRoute.paramMap.subscribe((params: ParamMap) => {
       this.isbn = params.get('isbn');
+      this.qrCodeValue += this.isbn;
       const queryParams = {
         filterColumn: 'ISBN',
         filterValue: this.isbn,
@@ -39,6 +40,7 @@ export class ProductPageComponent implements OnInit {
       //   .subscribe((data: any) => {
       //     this.itemBasedRecommendations = data;
       //   });
+
       this.productService
         .getContentBasedRecommendations(queryParamsRec)
         .subscribe((data: any) => {

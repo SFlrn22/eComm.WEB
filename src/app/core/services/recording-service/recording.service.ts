@@ -1,35 +1,45 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
+import RecordRTC from 'recordrtc';
+import { StereoAudioRecorder } from 'recordrtc';
 
 @Injectable({
   providedIn: 'root',
 })
 export class RecordingService {
-  mediaRecorder?: MediaRecorder;
-  audioChunks: any[] = [];
-
+  record: StereoAudioRecorder | null = null;
+  error: string = '';
+  audioBlob!: Blob;
+  private blobSubject: Subject<Blob> = new Subject<Blob>();
   constructor() {}
 
   StartRecording() {
-    navigator.mediaDevices.getUserMedia({ audio: true }).then((stream) => {
-      this.mediaRecorder = new MediaRecorder(stream, {
-        mimeType: 'audio/wav',
-      });
-
-      this.mediaRecorder.start();
-
-      this.mediaRecorder.addEventListener('dataavailable', (event) => {
-        this.audioChunks.push(event.data);
-      });
-    });
+    let mediaConstraints = {
+      video: false,
+      audio: true,
+    };
+    navigator.mediaDevices
+      .getUserMedia(mediaConstraints)
+      .then(this.successCallback.bind(this), this.errorCallback.bind(this));
   }
 
-  StopRecording() {
-    this.mediaRecorder!.addEventListener('stop', () => {});
-    this.mediaRecorder!.stop();
+  successCallback(stream: any) {
+    var StereoAudioRecorder = RecordRTC.StereoAudioRecorder;
+    this.record = new StereoAudioRecorder(stream, {
+      mimeType: 'audio/wav',
+      numberOfAudioChannels: 1,
+    });
+    this.record.record();
+  }
 
-    const audioBlob = new Blob(this.audioChunks);
+  StopRecording(): Observable<Blob> {
+    this.record!.stop((blob) => {
+      this.blobSubject.next(blob);
+    });
+    return this.blobSubject.asObservable();
+  }
 
-    return audioBlob;
+  errorCallback() {
+    this.error = 'Can not play audio in your browser';
   }
 }

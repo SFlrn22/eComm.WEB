@@ -16,11 +16,17 @@ export class ProductCardComponent {
   constructor(private favoriteService: FavoriteService) {}
 
   handleFavoriteClick() {
-    this.request.isbn = this.productDetails.isbn;
+    const isbn = this.productDetails.isbn;
+    this.request.isbn = isbn;
     this.favoriteService.addToFavorites(this.request).subscribe((data) => {
       console.log(data);
       if (data.isSuccess == true) {
         this.isFavorite = !this.isFavorite;
+        if (this.isFavorite == true) {
+          this.favoriteService.addToFavoriteArray(isbn);
+        } else {
+          this.favoriteService.removeFromFavoriteArray(isbn);
+        }
       }
     });
   }

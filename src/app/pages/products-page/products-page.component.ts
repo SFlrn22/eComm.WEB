@@ -5,6 +5,7 @@ import { Product } from '../../core/models/Product';
 import { ProductService } from '../../core/services/product-service/product.service';
 import { FormControl, FormGroup } from '@angular/forms';
 import { FavoriteService } from '../../core/services/favorite-service/favorite.service';
+import { saveAs } from 'file-saver';
 
 @Component({
   selector: 'app-products-page',
@@ -144,8 +145,11 @@ export class ProductsPageComponent implements OnInit {
   }
 
   stopRecording() {
-    const blob = this.recordingService.StopRecording();
-    this.isRecording = false;
+    this.recordingService.StopRecording().subscribe((blob) => {
+      console.log(blob);
+      saveAs(blob, 'test.wav');
+      this.isRecording = false;
+    });
   }
 
   isFavorite(product: any): boolean {

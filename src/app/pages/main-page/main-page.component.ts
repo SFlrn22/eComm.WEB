@@ -31,7 +31,7 @@ export class MainPageComponent implements OnInit {
   ];
 
   topTenProducts: Product[] = [];
-  favoritesISBN: string[] = [];
+  favoritesLoaded: boolean = false;
 
   constructor(
     private productService: ProductService,
@@ -44,7 +44,8 @@ export class MainPageComponent implements OnInit {
     });
 
     this.favoriteService.getFavorites().subscribe((data: any) => {
-      this.favoritesISBN = data.data;
+      this.favoriteService.setFavoritesArray(data.data);
+      this.favoritesLoaded = true;
     });
   }
 }

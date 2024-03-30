@@ -9,6 +9,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { Product } from '../../core/models/Product';
+import { FavoriteService } from '../../core/services/favorite-service/favorite.service';
 
 @Component({
   selector: 'app-item-carousel',
@@ -18,7 +19,7 @@ import { Product } from '../../core/models/Product';
 @Injectable()
 export class ItemCarouselComponent {
   @Input() products: any;
-  @Input() favorites: any;
+  favorites: string[] = [];
   totalCards: number = 10;
   currentPage: number = 1;
   pagePosition: string = '0%';
@@ -30,7 +31,10 @@ export class ItemCarouselComponent {
   @ViewChild('container', { static: true, read: ElementRef })
   container: ElementRef | undefined;
 
-  constructor(@Inject(DOCUMENT) private document: Document) {}
+  constructor(
+    @Inject(DOCUMENT) private document: Document,
+    private favoriteService: FavoriteService
+  ) {}
 
   @HostListener('window:resize') windowResize() {
     let newCardsPerPage = this.getCardsPerPage();
@@ -45,6 +49,7 @@ export class ItemCarouselComponent {
   }
 
   ngOnInit() {
+    this.favorites = this.favoriteService.getFavoritesArray();
     this.cardsPerPage = this.getCardsPerPage();
     this.initializeSlider();
   }

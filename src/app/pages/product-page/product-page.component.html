@@ -46,6 +46,7 @@
                 </select>
                 <button type="button">Add to Cart</button>
                 <button type="compare">Compare</button>
+                <qrcode [qrdata]="qrCodeValue" [width]="256" [errorCorrectionLevel]="'M'"></qrcode>
             </div>
         </div>
     </div>

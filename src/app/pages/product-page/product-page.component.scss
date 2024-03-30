@@ -20,21 +20,11 @@ img {
 
 .title {
   font-size: 3rem;
+  line-height: 5rem;
   text-transform: capitalize;
   font-weight: 700;
   position: relative;
   margin: 1rem 0;
-}
-
-.title::after {
-  content: "";
-  position: absolute;
-  top: 40px;
-  left: 0;
-  bottom: 0;
-  height: 4px;
-  width: 90px;
-  background: black;
 }
 
 .product-ratings > .bi {
