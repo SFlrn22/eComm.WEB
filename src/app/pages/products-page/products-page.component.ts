@@ -6,6 +6,7 @@ import { ProductService } from '../../core/services/product-service/product.serv
 import { FormControl, FormGroup } from '@angular/forms';
 import { FavoriteService } from '../../core/services/favorite-service/favorite.service';
 import { saveAs } from 'file-saver';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-products-page',
@@ -26,6 +27,8 @@ export class ProductsPageComponent implements OnInit {
 
   productList: Product[] = [];
   favorites: string[] = [];
+
+  private subscription: Subscription | undefined;
 
   constructor(
     private productService: ProductService,
@@ -145,11 +148,22 @@ export class ProductsPageComponent implements OnInit {
   }
 
   stopRecording() {
-    this.recordingService.StopRecording().subscribe((blob) => {
-      console.log(blob);
-      saveAs(blob, 'test.wav');
-      this.isRecording = false;
-    });
+    if (this.subscription && !this.subscription.closed) {
+      this.subscription.unsubscribe();
+    }
+    this.subscription = this.recordingService
+      .StopRecording()
+      .subscribe((blob) => {
+        //saveAs(blob, 'test.wav');
+        const formData = new FormData();
+        formData.append('record.wav', blob);
+        this.productService
+          .getProductByVoiceRecord(formData)
+          .subscribe((data: Product) => {
+            console.log(data);
+          });
+        this.isRecording = false;
+      });
   }
 
   isFavorite(product: any): boolean {
