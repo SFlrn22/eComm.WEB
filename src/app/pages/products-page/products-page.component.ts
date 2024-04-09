@@ -160,7 +160,8 @@ export class ProductsPageComponent implements OnInit {
         this.productService
           .getProductByVoiceRecord(formData)
           .subscribe((data: Product) => {
-            console.log(data);
+            this.productList = [];
+            this.productList.push(data);
           });
         this.isRecording = false;
       });
@@ -168,5 +169,23 @@ export class ProductsPageComponent implements OnInit {
 
   isFavorite(product: any): boolean {
     return this.favorites.some((favorite: string) => favorite === product.isbn);
+  }
+
+  uploadFile(files: any) {
+    if (files.length === 0) {
+      return;
+    }
+
+    const formData = new FormData();
+    let fileToUpload = <File>files[0];
+
+    formData.append('file', fileToUpload, fileToUpload.name);
+
+    this.productService
+      .getProductByImage(formData)
+      .subscribe((data: Product) => {
+        this.productList = [];
+        this.productList.push(data);
+      });
   }
 }

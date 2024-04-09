@@ -3,9 +3,11 @@
     <form class="form-wrapper" (ngSubmit)="search()" [formGroup]="searchForm">
       <div class="input-group">
         <div class="input-group-prepend">
-          <mat-icon class="small-icon" (click)="stopRecording()" *ngIf="isRecording == true">volume_up</mat-icon>
           <span class="input-group-text">
+            <input type="file" #file placeholder="Choose file" (change)="uploadFile(file.files)" style="display:none;">
+            <mat-icon class="small-icon" (click)="file.click()">cloud_upload</mat-icon>
             <mat-icon class="small-icon" (click)="startRecording()" *ngIf="isRecording == false">volume_off</mat-icon>
+            <mat-icon class="small-icon" (click)="stopRecording()" *ngIf="isRecording == true">volume_up</mat-icon>
             <mat-icon class="small-icon" (click)="search()">search</mat-icon>
           </span>
         </div>
