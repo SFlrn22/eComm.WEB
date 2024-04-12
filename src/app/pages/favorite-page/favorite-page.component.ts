@@ -11,16 +11,6 @@ import { FavoriteService } from '../../core/services/favorite-service/favorite.s
 })
 export class FavoritePageComponent implements OnInit {
   userId: string | null = '';
-
-  product: Product = {
-    isbn: '0195153448',
-    title: 'Classical Mythology',
-    author: 'Mark P. O. Morford',
-    publisher: 'Oxford University Press',
-    publicationYear: '2002',
-    imageUrlM: 'http://images.amazon.com/images/P/0195153448.01.MZZZZZZZ.jpg',
-  };
-
   productsInfo: Product[] = [];
 
   constructor(

@@ -35,11 +35,11 @@ export class ProductPageComponent implements OnInit {
         isbn: this.isbn,
       };
 
-      // this.productService
-      //   .getItemBasedRecommendations(queryParamsRec)
-      //   .subscribe((data: any) => {
-      //     this.itemBasedRecommendations = data;
-      //   });
+      this.productService
+        .getItemBasedRecommendations(queryParamsRec)
+        .subscribe((data: any) => {
+          this.itemBasedRecommendations = data;
+        });
 
       this.productService
         .getContentBasedRecommendations(queryParamsRec)

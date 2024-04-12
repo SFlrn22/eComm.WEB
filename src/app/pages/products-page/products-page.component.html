@@ -17,7 +17,7 @@
     </form>
   </div>
   <div class="products-grid">
-    <div *ngFor="let product of productList;">
+    <div class="p-card-wrapper" *ngFor="let product of productList;">
       <app-product-card [productDetails]="product" [isFavorite]="isFavorite(product)"></app-product-card>
     </div>
   </div>

@@ -41,6 +41,7 @@ export class MainPageComponent implements OnInit {
   ngOnInit(): void {
     this.productService.getTopTen().subscribe((data: Product[]) => {
       this.topTenProducts = data;
+      console.log(data);
     });
 
     this.favoriteService.getFavorites().subscribe((data: any) => {

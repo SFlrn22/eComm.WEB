@@ -4,5 +4,6 @@ export interface Product {
   author: string;
   publisher: string;
   publicationYear: string;
-  imageUrlM: string;
+  imageUrlL: string;
+  averageRating: number;
 }

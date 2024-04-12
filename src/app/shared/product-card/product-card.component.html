@@ -2,17 +2,16 @@
   <div class="heart-icon">
     <i (click)="handleFavoriteClick()" [ngClass]="!isFavorite ? 'bi bi-heart h5' : 'bi bi-heart-fill h5'"></i>
   </div>
-  <img class="card-img-top" src="{{ productDetails.imageUrlM }}" alt="Card image cap" />
+  <img class="card-img-top" src="{{productDetails.imageUrlL}}" alt="Card image cap" />
   <div class="card-body">
     <h5 class="card-title">{{ productDetails.title }}</h5>
     <h4 class="card-price">64$</h4>
     <div class="card-bottom">
-      <div class="star-ratings">
-        <span class="bi bi-star-fill"></span>
-        <span class="bi bi-star-fill"></span>
-        <span class="bi bi-star-fill"></span>
-        <span class="bi bi-star"></span>
-        <span class="bi bi-star"></span>
+      <div class="star-ratings" (mouseleave)="defaultStars()">
+        <span *ngFor="let fill of fillStarArray; let i = index"
+          [ngClass]="{'bi bi-star-fill': fill, 'bi bi-star': !fill}" (mouseenter)="hanldeStarHover(i)"
+          (mouseleave)="hanldeStarLeave(i)" (click)="submitStarReview()"></span>
+        <span class="rating-avg">{{productDetails.averageRating}}</span>
       </div>
       <a class="shopping-cart" [routerLink]="['/product', productDetails.isbn]">
         <i class="bi bi-cart h2"></i>

@@ -20,6 +20,13 @@
   column-gap: 1rem;
   row-gap: 1rem;
   padding-bottom: 50px;
+  justify-items: center;
+}
+
+.p-card-wrapper {
+  width: 15rem;
+  height: 22rem;
+  align-self: center;
 }
 
 app-product-card {

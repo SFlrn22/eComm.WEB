@@ -1,7 +1,7 @@
 <div class="page-container">
     <div class="product-container">
         <div class="product-picture">
-            <img src="{{productInfo?.imageUrlM}}" alt="image" class="product-img">
+            <img src="{{productInfo?.imageUrlL}}" alt="image" class="product-img">
         </div>
         <div class="product-details">
             <h2 class="title">{{productInfo?.title}}</h2>
@@ -15,12 +15,12 @@
             </div>
             <div class="product-detail">
                 <h2 class="info">About this book</h2>
-                <p class="isbn">{{productInfo?.isbn}}</p>
-                <p class="author">{{productInfo?.author}}</p>
-                <p class="publisher">{{productInfo?.publisher}}</p>
-                <p class="publicationYear">{{productInfo?.publicationYear}}</p>
+                <p class="isbn">ISBN: {{productInfo?.isbn}}</p>
+                <p class="author">Author: {{productInfo?.author}}</p>
+                <p class="publisher">Publisher: {{productInfo?.publisher}}</p>
+                <p class="publicationYear">Year of publication: {{productInfo?.publicationYear}}</p>
                 <p class="category">Category: Test</p>
-                <h2 class="description-header">Description</h2>
+                <!-- <h2 class="description-header">Description</h2>
                 <p class="description">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
                     Ipsum has been the industry's standard
                     dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to
@@ -33,7 +33,7 @@
                     Ipsum
                     passages, and more
                     recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                </p>
+                </p> -->
             </div>
             <p class="price">Price: $21</p>
             <div class="purchase">
@@ -46,7 +46,7 @@
                 </select>
                 <button type="button">Add to Cart</button>
                 <button type="compare">Compare</button>
-                <qrcode [qrdata]="qrCodeValue" [width]="256" [errorCorrectionLevel]="'M'"></qrcode>
+                <!-- <qrcode [qrdata]="qrCodeValue" [width]="256" [errorCorrectionLevel]="'M'"></qrcode> -->
             </div>
         </div>
     </div>

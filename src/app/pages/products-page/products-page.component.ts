@@ -75,6 +75,12 @@ export class ProductsPageComponent implements OnInit {
     });
     this.isActive = this.isActive.map(() => false);
     this.isActive[btnNumber - 1] = true;
+    var firstItemActive = this.isActive[0];
+    if (firstItemActive == true) {
+      this.isDisabledPrev = true;
+    } else {
+      this.isDisabledPrev = false;
+    }
   }
 
   next() {
