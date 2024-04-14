@@ -1,0 +1,24 @@
+html {
+  scroll-behavior: smooth;
+}
+
+.page-container {
+  height: calc(100% - 110px);
+  overflow-y: scroll;
+  line-height: 1.5;
+}
+
+.cart-wrapper {
+  height: 100%;
+  width: 100%;
+  display: flex;
+}
+
+.left-side {
+  flex: 3;
+}
+
+.right-side {
+  flex: 1;
+  border-left: 2px gray solid;
+}

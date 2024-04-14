@@ -73,15 +73,22 @@ const routes: Routes = [
   {
     path: 'success-payment',
     loadChildren: () =>
-      import('./pages/success-payment/success-payment.module').then(
+      import('./pages/success-payment-page/success-payment.module').then(
         (m) => m.SuccessPaymentModule
       ),
   },
   {
     path: 'failed-payment',
     loadChildren: () =>
-      import('./pages/failed-payment/failed-payment.module').then(
+      import('./pages/failed-payment-page/failed-payment.module').then(
         (m) => m.FailedPaymentModule
+      ),
+  },
+  {
+    path: 'cart',
+    loadChildren: () =>
+      import('./pages/cart-page/cart-page.module').then(
+        (m) => m.CartPageModule
       ),
   },
 ];
