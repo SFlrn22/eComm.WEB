@@ -70,6 +70,20 @@ const routes: Routes = [
         (m) => m.FavoritePageModule
       ),
   },
+  {
+    path: 'success-payment',
+    loadChildren: () =>
+      import('./pages/success-payment/success-payment.module').then(
+        (m) => m.SuccessPaymentModule
+      ),
+  },
+  {
+    path: 'failed-payment',
+    loadChildren: () =>
+      import('./pages/failed-payment/failed-payment.module').then(
+        (m) => m.FailedPaymentModule
+      ),
+  },
 ];
 
 @NgModule({
