@@ -1,20 +1,20 @@
 <div class="card-wrapper">
     <div class="left-side">
-        <img src="http://images.amazon.com/images/P/0195153448.01.LZZZZZZZ.jpg" alt="">
+        <img src="{{productDetails.imageUrlS}}" alt="">
         <div class="description">
             <div class="details-wrapper">
-                <span class="title">Classical Mythology</span>
-                <span class="isbn">0195153448</span>
+                <span class="title">{{productDetails.title}}</span>
+                <span class="isbn">{{productDetails.isbn}}</span>
             </div>
             <div class="count-wrapper">
                 <button class="oper-button" (click)="subtract()">-</button>
-                <span class="count">2</span>
+                <span class="count">{{productDetails.count}}</span>
                 <button class="oper-button" (click)="add()">+</button>
             </div>
         </div>
     </div>
     <div class="right-side">
-        <span>2 x 60$</span>
+        <span>{{productDetails.count}} x {{productDetails.price}}$</span>
     </div>
 </div>
 <hr class="border">

@@ -1,14 +1,12 @@
 <div class="page-container">
     <div class="cart-wrapper">
         <div class="top-side">
-            <app-cart-product-card></app-cart-product-card>
-            <app-cart-product-card></app-cart-product-card>
-            <app-cart-product-card></app-cart-product-card>
-            <app-cart-product-card></app-cart-product-card>
-            <app-cart-product-card></app-cart-product-card>
+            <div *ngFor="let product of productsInfo;">
+                <app-cart-product-card [productDetails]="product"></app-cart-product-card>
+            </div>
         </div>
         <div class="bottom-side">
-            <span class="total">Total: 50$</span>
+            <span class="total">Total: {{totalAmount}}$</span>
             <div>
                 <button class="btn btn-primary btn-lg payment-btn" (click)="createSession()">Pay</button>
             </div>

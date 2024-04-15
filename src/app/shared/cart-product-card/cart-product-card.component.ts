@@ -12,10 +12,20 @@ export class CartProductCardComponent {
 
   constructor(private cartService: CartService) {}
   add() {
-    console.log('added');
+    this.cartService
+      .addToCart(this.productDetails.bookId, 1)
+      .subscribe((data) => {
+        this.productDetails.count += 1;
+        console.log(data);
+      });
   }
 
   subtract() {
-    console.log('subtracted');
+    this.cartService
+      .removeFromCart(this.productDetails.bookId)
+      .subscribe((data) => {
+        this.productDetails.count -= 1;
+        console.log(data);
+      });
   }
 }
