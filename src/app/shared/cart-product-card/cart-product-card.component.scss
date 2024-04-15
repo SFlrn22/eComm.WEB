@@ -1,14 +1,50 @@
 .card-wrapper {
   height: 14vh;
   display: flex;
+  padding-bottom: 2px;
 }
 
 .left-side {
-  background-color: red;
+  display: flex;
   flex: 2;
 }
 .right-side {
-  background-color: blue;
   flex: 1;
   display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+.description {
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.details-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.isbn {
+  color: rgba(128, 128, 128, 0.651);
+  font-size: smaller;
+}
+
+.border {
+  width: 420px;
+  border-color: rgba(128, 128, 128, 0.589) !important;
+  margin-left: 6vw;
+}
+.count-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.oper-button {
+  font-size: 1vw;
+  border: none;
+  background-color: transparent;
 }

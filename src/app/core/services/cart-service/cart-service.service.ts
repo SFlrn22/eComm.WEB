@@ -6,13 +6,26 @@ import { CookieHelperService } from '../cookie-helper-service/cookie-helper.serv
 @Injectable({
   providedIn: 'root',
 })
-export class CartServiceService {
+export class CartService {
   apiUrl: string = environment.apiUrl;
 
   constructor(
     private http: HttpClient,
     private cookieHelper: CookieHelperService
   ) {}
+
+  getActiveCart() {
+    var headers_object = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: 'Bearer ' + this.cookieHelper.getCookies('jwt'),
+    });
+
+    const httpOptions = {
+      headers: headers_object,
+    };
+
+    return this.http.get<any>(this.apiUrl + '/GetActiveCart', httpOptions);
+  }
 
   addToCart(bookId: number, count: number) {
     var headers_object = new HttpHeaders({

@@ -1,12 +1,17 @@
 <div class="page-container">
     <div class="cart-wrapper">
-        <div class="left-side">
+        <div class="top-side">
+            <app-cart-product-card></app-cart-product-card>
+            <app-cart-product-card></app-cart-product-card>
+            <app-cart-product-card></app-cart-product-card>
             <app-cart-product-card></app-cart-product-card>
             <app-cart-product-card></app-cart-product-card>
         </div>
-        <div class="right-side">
-            <div class="top"></div>
-            <div class="bottom"></div>
+        <div class="bottom-side">
+            <span class="total">Total: 50$</span>
+            <div>
+                <button class="btn btn-primary btn-lg payment-btn" (click)="createSession()">Pay</button>
+            </div>
         </div>
     </div>
 </div>

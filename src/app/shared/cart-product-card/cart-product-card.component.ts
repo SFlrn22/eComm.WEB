@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { Product } from '../../core/models/Product';
 import { CartProduct } from '../../core/models/CartProduct';
+import { CartService } from '../../core/services/cart-service/cart-service.service';
 
 @Component({
   selector: 'app-cart-product-card',
@@ -9,4 +9,13 @@ import { CartProduct } from '../../core/models/CartProduct';
 })
 export class CartProductCardComponent {
   @Input() productDetails = {} as CartProduct;
+
+  constructor(private cartService: CartService) {}
+  add() {
+    console.log('added');
+  }
+
+  subtract() {
+    console.log('subtracted');
+  }
 }

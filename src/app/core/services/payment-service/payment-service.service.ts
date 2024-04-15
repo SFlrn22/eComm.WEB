@@ -6,7 +6,7 @@ import { CookieHelperService } from '../cookie-helper-service/cookie-helper.serv
 @Injectable({
   providedIn: 'root',
 })
-export class PaymentServiceService {
+export class PaymentService {
   apiUrl: string = environment.apiUrl;
 
   constructor(
