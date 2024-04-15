@@ -11,7 +11,6 @@ import { CartService } from '../../core/services/cart-service/cart-service.servi
 export class CartPageComponent implements OnInit {
   productsInfo: CartProduct[] = [];
   totalAmount: number = 0;
-
   constructor(
     private paymentService: PaymentService,
     private cartService: CartService
@@ -19,14 +18,16 @@ export class CartPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.cartService.getActiveCart().subscribe((data: any) => {
-      this.productsInfo = data.data.Products;
-      this.totalAmount = data.data.TotalAmount;
+      console.log(data);
+      this.productsInfo = data.data.products;
+      this.totalAmount = data.data.totalAmount;
     });
   }
 
   createSession() {
-    this.paymentService.createPaymentSession().subscribe((url: string) => {
-      window.location.href = url;
+    this.paymentService.createPaymentSession().subscribe((data: any) => {
+      console.log(data.data);
+      window.location.href = data.data;
     });
   }
 }

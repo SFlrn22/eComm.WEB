@@ -26,9 +26,9 @@
             <a mat-menu-item (click)="Logout()" *ngIf="isAuthenticated">Log Out</a>
           </ng-template>
         </mat-menu>
-        <button class="btn" type="button" *ngIf="isAuthenticated">
+        <a class="btn" type="button" *ngIf="isAuthenticated" href="/cart">
           <i class="bi bi-cart-fill h2"></i>
-        </button>
+        </a>
         <a class="btn" type="button" *ngIf="isAuthenticated" href="/favorite">
           <i class="bi bi-heart-fill h2 heart-icon"></i>
         </a>

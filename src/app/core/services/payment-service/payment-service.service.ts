@@ -25,6 +25,7 @@ export class PaymentService {
     };
     return this.http.post<any>(
       this.apiUrl + '/CreateStripeSession',
+      null,
       httpOptions
     );
   }

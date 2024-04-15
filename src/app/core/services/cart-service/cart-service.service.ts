@@ -38,7 +38,7 @@ export class CartService {
     };
     return this.http.post<any>(
       this.apiUrl + '/AddToCart',
-      { bookId, count },
+      { bookId: bookId, count: 1 },
       httpOptions
     );
   }

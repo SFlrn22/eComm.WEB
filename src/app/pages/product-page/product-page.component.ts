@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { ProductService } from '../../core/services/product-service/product.service';
 import { Product } from '../../core/models/Product';
+import { CartService } from '../../core/services/cart-service/cart-service.service';
 
 @Component({
   selector: 'app-product-page',
@@ -16,7 +17,8 @@ export class ProductPageComponent implements OnInit {
   qrCodeValue: string = 'https://isbnsearch.org/isbn/';
   constructor(
     private activeRoute: ActivatedRoute,
-    private productService: ProductService
+    private productService: ProductService,
+    private cartService: CartService
   ) {}
 
   ngOnInit(): void {
@@ -46,6 +48,12 @@ export class ProductPageComponent implements OnInit {
         .subscribe((data: any) => {
           this.contentBasedRecommendations = data;
         });
+    });
+  }
+
+  addToCart() {
+    this.cartService.addToCart(this.productInfo!.id, 1).subscribe((data) => {
+      console.log(data);
     });
   }
 }
