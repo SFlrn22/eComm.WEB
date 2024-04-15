@@ -3,22 +3,49 @@ html {
 }
 
 .page-container {
-  height: calc(100% - 110px);
+  height: calc(100% - 90px);
   overflow-y: scroll;
-  line-height: 1.5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .cart-wrapper {
   height: 100%;
-  width: 100%;
+  padding: 5vh 3vw;
+  width: 70%;
   display: flex;
 }
 
 .left-side {
+  padding-top: 4vh;
   flex: 3;
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+  gap: 3px;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.left-side::-webkit-scrollbar {
+  display: none;
 }
 
 .right-side {
   flex: 1;
-  border-left: 2px gray solid;
+  border-left: 1px gray solid;
+  display: flex;
+  flex-direction: column;
+}
+
+.top {
+  flex: 3;
+  background-color: aqua;
+  margin: 0 20px;
+}
+
+.bottom {
+  flex: 1;
+  background-color: aquamarine;
 }

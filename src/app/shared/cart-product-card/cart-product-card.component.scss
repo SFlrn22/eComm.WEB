@@ -1,0 +1,14 @@
+.card-wrapper {
+  height: 14vh;
+  display: flex;
+}
+
+.left-side {
+  background-color: red;
+  flex: 2;
+}
+.right-side {
+  background-color: blue;
+  flex: 1;
+  display: flex;
+}

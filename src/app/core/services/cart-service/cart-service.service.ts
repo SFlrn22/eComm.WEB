@@ -14,7 +14,7 @@ export class CartServiceService {
     private cookieHelper: CookieHelperService
   ) {}
 
-  addToCart(bookId: number) {
+  addToCart(bookId: number, count: number) {
     var headers_object = new HttpHeaders({
       'Content-Type': 'application/json',
       Authorization: 'Bearer ' + this.cookieHelper.getCookies('jwt'),
@@ -23,7 +23,11 @@ export class CartServiceService {
     const httpOptions = {
       headers: headers_object,
     };
-    return this.http.post<any>(this.apiUrl + '/AddToCart', bookId, httpOptions);
+    return this.http.post<any>(
+      this.apiUrl + '/AddToCart',
+      { bookId, count },
+      httpOptions
+    );
   }
 
   removeFromCart(bookId: number) {
