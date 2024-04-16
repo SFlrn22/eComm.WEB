@@ -1,5 +1,5 @@
 export interface CartProduct {
-  bookId: number;
+  bookID: number;
   isbn: string;
   title: string;
   imageUrlS: string;

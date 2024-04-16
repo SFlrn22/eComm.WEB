@@ -13,7 +13,7 @@ export class CartProductCardComponent {
   constructor(private cartService: CartService) {}
   add() {
     this.cartService
-      .addToCart(this.productDetails.bookId, 1)
+      .addToCart(this.productDetails.bookID, 1)
       .subscribe((data) => {
         this.productDetails.count += 1;
         console.log(data);
@@ -22,10 +22,12 @@ export class CartProductCardComponent {
 
   subtract() {
     this.cartService
-      .removeFromCart(this.productDetails.bookId)
+      .removeFromCart(this.productDetails.bookID)
       .subscribe((data) => {
         this.productDetails.count -= 1;
-        console.log(data);
+        if (this.productDetails.count == 0) {
+          window.location.reload();
+        }
       });
   }
 }

@@ -54,7 +54,7 @@ export class CartService {
     };
     return this.http.post<any>(
       this.apiUrl + '/RemoveFromCart',
-      bookId,
+      { bookId: bookId },
       httpOptions
     );
   }
