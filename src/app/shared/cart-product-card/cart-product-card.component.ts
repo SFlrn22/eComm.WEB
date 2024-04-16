@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { CartProduct } from '../../core/models/CartProduct';
 import { CartService } from '../../core/services/cart-service/cart-service.service';
 
@@ -7,16 +7,23 @@ import { CartService } from '../../core/services/cart-service/cart-service.servi
   templateUrl: './cart-product-card.component.html',
   styleUrl: './cart-product-card.component.scss',
 })
-export class CartProductCardComponent {
+export class CartProductCardComponent implements OnInit {
   @Input() productDetails = {} as CartProduct;
 
+  pricePerItem: number = 0;
+
   constructor(private cartService: CartService) {}
+
+  ngOnInit(): void {
+    this.pricePerItem = this.productDetails.price / this.productDetails.count;
+  }
+
   add() {
     this.cartService
       .addToCart(this.productDetails.bookID, 1)
       .subscribe((data) => {
         this.productDetails.count += 1;
-        console.log(data);
+        window.location.reload();
       });
   }
 
@@ -25,9 +32,7 @@ export class CartProductCardComponent {
       .removeFromCart(this.productDetails.bookID)
       .subscribe((data) => {
         this.productDetails.count -= 1;
-        if (this.productDetails.count == 0) {
-          window.location.reload();
-        }
+        window.location.reload();
       });
   }
 }

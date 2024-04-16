@@ -1,4 +1,8 @@
-import { Component } from '@angular/core';
+import {
+  AfterContentChecked,
+  ChangeDetectorRef,
+  Component,
+} from '@angular/core';
 import { LoaderService } from './core/services/loader-service/loader.service';
 
 @Component({
@@ -6,7 +10,10 @@ import { LoaderService } from './core/services/loader-service/loader.service';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
-export class AppComponent {
-  constructor(public loader: LoaderService) {}
+export class AppComponent implements AfterContentChecked {
+  constructor(public loader: LoaderService, private ref: ChangeDetectorRef) {}
+  ngAfterContentChecked() {
+    this.ref.detectChanges();
+  }
   title = 'eComm.WEB';
 }

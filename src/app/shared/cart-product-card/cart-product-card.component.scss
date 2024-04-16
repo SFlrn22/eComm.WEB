@@ -16,7 +16,6 @@
 }
 
 .description {
-  padding-left: 20px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -33,9 +32,9 @@
 }
 
 .border {
-  width: 420px;
+  width: 520px;
   border-color: rgba(128, 128, 128, 0.589) !important;
-  margin-left: 6vw;
+  margin-left: 4vw;
 }
 .count-wrapper {
   display: flex;
@@ -49,6 +48,6 @@
   background-color: transparent;
 }
 
-.left-side > img {
-  width: 100px;
+.card-wrapper > img {
+  width: 90px;
 }

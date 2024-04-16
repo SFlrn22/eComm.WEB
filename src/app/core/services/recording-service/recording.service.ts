@@ -32,7 +32,7 @@ export class RecordingService {
     this.record.record();
   }
 
-  StopRecording(): Observable<Blob> {
+  StopRecording(): Observable<Blob | null> {
     this.record!.stop((blob) => {
       this.blobSubject.next(blob);
     });

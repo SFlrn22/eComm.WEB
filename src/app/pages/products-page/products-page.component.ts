@@ -157,20 +157,31 @@ export class ProductsPageComponent implements OnInit {
     if (this.subscription && !this.subscription.closed) {
       this.subscription.unsubscribe();
     }
-    this.subscription = this.recordingService
-      .StopRecording()
-      .subscribe((blob) => {
-        //saveAs(blob, 'test.wav');
-        const formData = new FormData();
-        formData.append('record.wav', blob);
-        this.productService
-          .getProductByVoiceRecord(formData)
-          .subscribe((data: Product) => {
-            this.productList = [];
-            this.productList.push(data);
-          });
-        this.isRecording = false;
-      });
+    try {
+      this.subscription = this.recordingService
+        .StopRecording()
+        .subscribe((blob) => {
+          //saveAs(blob, 'test.wav');
+          const formData = new FormData();
+          if (blob != null) {
+            formData.append('record.wav', blob);
+            this.productService
+              .getProductByVoiceRecord(formData)
+              .subscribe((data: Product) => {
+                this.productList = [];
+                this.productList.push(data);
+              });
+            this.isRecording = false;
+          } else {
+            this.isRecording = false;
+          }
+        });
+    } catch {
+      if (this.subscription && !this.subscription.closed) {
+        this.subscription.unsubscribe();
+      }
+      this.isRecording = false;
+    }
   }
 
   isFavorite(product: any): boolean {
