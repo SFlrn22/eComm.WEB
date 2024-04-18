@@ -4,7 +4,9 @@
   </div>
   <img class="card-img-top" src="{{productDetails.imageUrlL}}" alt="Card image cap" />
   <div class="card-body">
-    <h5 class="card-title">{{ productDetails.title }}</h5>
+    <div class="title-wrapper">
+      <h5 class="card-title">{{ productDetails.title }}</h5>
+    </div>
     <h4 class="card-price">64$</h4>
     <div class="card-bottom">
       <div class="star-ratings" (mouseleave)="defaultStars()">

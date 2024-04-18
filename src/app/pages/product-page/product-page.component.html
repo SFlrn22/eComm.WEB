@@ -19,7 +19,7 @@
                 <p class="author">Author: {{productInfo?.author}}</p>
                 <p class="publisher">Publisher: {{productInfo?.publisher}}</p>
                 <p class="publicationYear">Year of publication: {{productInfo?.publicationYear}}</p>
-                <p class="category">Category: Test</p>
+                <p class="category">Category: {{productInfo?.category}}</p>
                 <!-- <h2 class="description-header">Description</h2>
                 <p class="description">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
                     Ipsum has been the industry's standard
@@ -35,7 +35,7 @@
                     recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
                 </p> -->
             </div>
-            <p class="price">Price: $21</p>
+            <p class="price">Price: ${{productInfo?.price ?? "21"}}</p>
             <div class="purchase">
                 <select class="narrow">
                     <option>1</option>
@@ -51,9 +51,16 @@
         </div>
     </div>
     <div class="recommendations-container">
-        <h2 class="recom-title">Item based recommendations</h2>
-        <app-item-carousel [products]="itemBasedRecommendations"></app-item-carousel>
-        <h2 class="recom-title">Content based recommendations</h2>
-        <app-item-carousel [products]="contentBasedRecommendations"></app-item-carousel>
+        <h2 class="recom-title" *ngIf="itemBasedRecommendations.length > 0">Item based recommendations</h2>
+        <app-item-carousel [products]="itemBasedRecommendations"
+            *ngIf="itemBasedRecommendations.length > 0"></app-item-carousel>
+        <h2 class="recom-title" *ngIf="contentBasedRecommendations.length > 0">Content based recommendations</h2>
+        <app-item-carousel [products]="contentBasedRecommendations"
+            *ngIf="contentBasedRecommendations.length > 0"></app-item-carousel>
+    </div>
+    <div class="peek-div">
+        <h1>Take a peek at what you can find in this book</h1>
+        <button class="btn btn-primary" (click)="textToImg()">Peek</button>
+        <img [src]="'data:image/png;base64,'+base64Img" *ngIf="base64Img != ''">
     </div>
 </div>

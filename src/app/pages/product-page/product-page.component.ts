@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { ProductService } from '../../core/services/product-service/product.service';
 import { Product } from '../../core/models/Product';
@@ -15,10 +15,13 @@ export class ProductPageComponent implements OnInit {
   itemBasedRecommendations: Product[] = [];
   contentBasedRecommendations: Product[] = [];
   qrCodeValue: string = 'https://isbnsearch.org/isbn/';
+  base64Img: string = '';
+
   constructor(
     private activeRoute: ActivatedRoute,
     private productService: ProductService,
-    private cartService: CartService
+    private cartService: CartService,
+    private cdr: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
@@ -55,5 +58,13 @@ export class ProductPageComponent implements OnInit {
     this.cartService.addToCart(this.productInfo!.id, 1).subscribe((data) => {
       console.log(data);
     });
+  }
+  textToImg() {
+    this.productService
+      .getImageFromText(this.productInfo?.title!)
+      .subscribe((data: any) => {
+        this.base64Img = data.result;
+        this.cdr.detectChanges();
+      });
   }
 }

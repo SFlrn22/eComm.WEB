@@ -7,4 +7,7 @@ export interface Product {
   publicationYear: string;
   imageUrlL: string;
   averageRating: number;
+  category: string;
+  description: string;
+  price: number;
 }

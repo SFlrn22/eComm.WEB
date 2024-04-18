@@ -126,4 +126,21 @@ export class ProductService {
       httpOptions
     );
   }
+
+  getImageFromText(title: string): any {
+    var headers_object = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: 'Bearer ' + this.cookieHelper.getCookies('jwt'),
+    });
+
+    const httpOptions = {
+      headers: headers_object,
+    };
+
+    return this.http.post<any>(
+      this.apiUrl + '/GetImageFromProductTitle',
+      { title },
+      httpOptions
+    );
+  }
 }
