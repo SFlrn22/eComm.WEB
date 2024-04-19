@@ -29,7 +29,7 @@ export class ProductsPageComponent implements OnInit {
   favorites: string[] = [];
 
   private subscription: Subscription | undefined;
-
+  private uploadSubscription: Subscription | undefined;
   constructor(
     private productService: ProductService,
     private favoriteService: FavoriteService,
@@ -167,9 +167,9 @@ export class ProductsPageComponent implements OnInit {
             formData.append('record.wav', blob);
             this.productService
               .getProductByVoiceRecord(formData)
-              .subscribe((data: Product) => {
+              .subscribe((data: any) => {
                 this.productList = [];
-                this.productList.push(data);
+                this.productList = data;
               });
             this.isRecording = false;
           } else {
@@ -189,6 +189,10 @@ export class ProductsPageComponent implements OnInit {
   }
 
   uploadFile(files: any) {
+    if (this.subscription && !this.subscription.closed) {
+      this.subscription.unsubscribe();
+    }
+
     if (files.length === 0) {
       return;
     }
@@ -197,12 +201,17 @@ export class ProductsPageComponent implements OnInit {
     let fileToUpload = <File>files[0];
 
     formData.append('file', fileToUpload, fileToUpload.name);
-
-    this.productService
-      .getProductByImage(formData)
-      .subscribe((data: Product) => {
-        this.productList = [];
-        this.productList.push(data);
-      });
+    try {
+      this.uploadSubscription = this.productService
+        .getProductByImage(formData)
+        .subscribe((data: Product) => {
+          this.productList = [];
+          this.productList.push(data);
+        });
+    } catch {
+      if (this.subscription && !this.subscription.closed) {
+        this.subscription.unsubscribe();
+      }
+    }
   }
 }
