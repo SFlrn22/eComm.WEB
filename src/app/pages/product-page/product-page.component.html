@@ -37,18 +37,22 @@
             </div>
             <p class="price">Price: ${{productInfo?.price ?? "21"}}</p>
             <div class="purchase">
-                <select class="narrow">
+                <!-- <select class="narrow">
                     <option>1</option>
                     <option>2</option>
                     <option>3</option>
                     <option>4</option>
                     <option>5</option>
-                </select>
+                </select> -->
                 <button type="button" (click)="addToCart()">Add to Cart</button>
                 <!-- <button type="btn btn-primary btn-lg compare">Compare</button> -->
                 <qrcode [qrdata]="qrCodeValue" [width]="256" [errorCorrectionLevel]="'M'"></qrcode>
             </div>
         </div>
+    </div>
+    <div class="description-wrapper">
+        <h1>Description</h1>
+        <div class="description">{{productInfo?.description}}</div>
     </div>
     <div class="recommendations-container">
         <h2 class="recom-title" *ngIf="itemBasedRecommendations.length > 0">Item based recommendations</h2>
