@@ -111,6 +111,22 @@ export class ProductService {
     );
   }
 
+  getImageSource(formdata: FormData): any {
+    var headers_object = new HttpHeaders({
+      Authorization: 'Bearer ' + this.cookieHelper.getCookies('jwt'),
+    });
+
+    const httpOptions = {
+      headers: headers_object,
+    };
+
+    return this.http.post<Product[]>(
+      this.apiUrl + '/GetImageSource',
+      formdata,
+      httpOptions
+    );
+  }
+
   rateProduct(request: RateProductRequest) {
     var headers_object = new HttpHeaders({
       'Content-Type': 'application/json',

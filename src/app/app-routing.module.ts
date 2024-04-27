@@ -91,6 +91,7 @@ const routes: Routes = [
         (m) => m.CartPageModule
       ),
   },
+  { path: 'find-source', loadChildren: () => import('./pages/find-source-page/find-source-page.module').then(m => m.FindSourcePageModule) },
 ];
 
 @NgModule({
