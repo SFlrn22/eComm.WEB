@@ -1,0 +1,12 @@
+<div class="page-container">
+    <input type="file" #file placeholder="Choose file" (change)="uploadFile(file.files)" style="display:none;">
+    <button (click)="file.click()">Upload image</button>
+    <h1>Input image</h1>
+    <img src="{{imageSource?.imageUrl}}" alt="">
+    <div class="wrapper">
+        <div *ngFor="let result of imageSource?.searchResults;" class="result-div">
+            <span class="title">{{result.title}}</span>
+            <span class="link">{{result.link}}</span>
+        </div>
+    </div>
+</div>

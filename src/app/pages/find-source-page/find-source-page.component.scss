@@ -1,0 +1,23 @@
+html {
+  scroll-behavior: smooth;
+}
+
+.page-container {
+  height: calc(100% - 90px);
+  overflow-y: scroll;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wrapper {
+  height: 100%;
+  display: flex;
+  flex: 2;
+  flex-direction: column;
+  overflow-y: scroll;
+  gap: 4px;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  padding-bottom: 4rem;
+}
