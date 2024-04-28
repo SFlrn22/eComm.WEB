@@ -31,6 +31,7 @@ export class FindSourcePageComponent {
       this.subscription = this.productService
         .getImageSource(formData)
         .subscribe((data: ImageSource) => {
+          console.log(data);
           this.imageSource = data;
         });
     } catch {

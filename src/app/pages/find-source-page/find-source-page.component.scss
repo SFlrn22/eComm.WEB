@@ -21,3 +21,30 @@ html {
   scrollbar-width: none;
   padding-bottom: 4rem;
 }
+
+.top {
+  margin: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+img {
+  width: 200px;
+}
+
+.result-wrapper {
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+  gap: 4px;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  padding-bottom: 4rem;
+  align-self: center;
+}
+
+.result-div {
+  display: flex;
+  flex-direction: column;
+}
