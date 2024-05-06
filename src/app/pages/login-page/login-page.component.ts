@@ -35,6 +35,7 @@ export class LoginPageComponent implements OnInit {
       this.authService.getToken(this.loginForm.value).subscribe((data: any) => {
         if (data.data.token != undefined || null) {
           this.cookieHelper.setCookies('jwt', data.data.token);
+          this.cookieHelper.setCookies('refresh', data.data.refreshToken);
           this.snackBarService.openSnackBar(
             'Logare realizata cu success, vei fi redirectat catre pagina de start',
             'Close',
