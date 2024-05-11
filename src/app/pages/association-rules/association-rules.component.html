@@ -1,0 +1,27 @@
+<div class="page-container">
+    <div class="options-bar">
+        <form class="form-wrapper" (ngSubmit)="search()" [formGroup]="searchForm">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">
+                        <mat-icon class="small-icon" (click)="search()">search</mat-icon>
+                    </span>
+                </div>
+                <input class="form-control border-end-0 border-right-0 border search-input" type="search"
+                    formControlName="title" placeholder="Start your search here" id="search-input" />
+            </div>
+        </form>
+    </div>
+    <div class="association-container">
+        <div *ngFor="let rule of rules" class="result-div">
+            <div class="left-side">
+                <span class="title">{{rule.title}}</span>
+                <img src="{{rule.imageURL}}" alt="">
+            </div>
+            <div class="right-side">
+                <span class="title">{{rule.associatedTitle}}</span>
+                <img src="{{rule.associatedImageURL}}" alt="">
+            </div>
+        </div>
+    </div>
+</div>

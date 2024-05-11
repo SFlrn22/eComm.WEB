@@ -1,6 +1,7 @@
 .container {
   height: 400px;
 }
+
 .start-p {
   max-width: 40em;
   font-family: serif;
@@ -12,4 +13,11 @@
 .swiper {
   width: 600px;
   height: 300px;
+}
+
+.page-container {
+  height: calc(100% - 90px);
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }

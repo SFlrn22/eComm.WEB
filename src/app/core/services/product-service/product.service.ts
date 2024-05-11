@@ -6,6 +6,7 @@ import { Params } from '@angular/router';
 import { CookieHelperService } from '../cookie-helper-service/cookie-helper.service';
 import { AddToFavoritesRequest } from '../../models/AddToFavoritesRequest';
 import { RateProductRequest } from '../../models/RateProductRequest';
+import { AssociationRule } from '../../models/AssociationRule';
 
 @Injectable({
   providedIn: 'root',
@@ -156,6 +157,23 @@ export class ProductService {
     return this.http.post<any>(
       this.apiUrl + '/GetImageFromProductTitle',
       { title },
+      httpOptions
+    );
+  }
+
+  getAssociationRules(queryParams: Params): any {
+    var headers_object = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: 'Bearer ' + this.cookieHelper.getCookies('jwt'),
+    });
+
+    const httpOptions = {
+      headers: headers_object,
+      params: queryParams,
+    };
+
+    return this.http.get<AssociationRule[]>(
+      this.apiUrl + '/Recommender/AssociationRules',
       httpOptions
     );
   }
