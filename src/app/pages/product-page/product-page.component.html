@@ -6,12 +6,9 @@
         <div class="product-details">
             <h2 class="title">{{productInfo?.title}}</h2>
             <div class="product-ratings">
-                <span class="bi bi-star-fill"></span>
-                <span class="bi bi-star-fill"></span>
-                <span class="bi bi-star-fill"></span>
-                <span class="bi bi-star"></span>
-                <span class="bi bi-star"></span>
-                <span class="rating-value">3</span>
+                <span *ngFor="let fill of fillStarArray; let i = index"
+                    [ngClass]="{'bi bi-star-fill': fill, 'bi bi-star': !fill}"></span>
+                <span class="rating-value">{{[productInfo?.averageRating]}}</span>
             </div>
             <div class="product-detail">
                 <h2 class="info">About this book</h2>
@@ -20,32 +17,10 @@
                 <p class="publisher">Publisher: {{productInfo?.publisher}}</p>
                 <p class="publicationYear">Year of publication: {{productInfo?.publicationYear}}</p>
                 <p class="category">Category: {{productInfo?.category}}</p>
-                <!-- <h2 class="description-header">Description</h2>
-                <p class="description">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                    Ipsum has been the industry's standard
-                    dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to
-                    make
-                    a type specimen
-                    book. It has survived not only five centuries, but also the leap into electronic typesetting,
-                    remaining
-                    essentially
-                    unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem
-                    Ipsum
-                    passages, and more
-                    recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                </p> -->
             </div>
-            <p class="price">Price: ${{productInfo?.price ?? "21"}}</p>
+            <p class="price">Price: ${{productInfo?.price ?? ""}}</p>
             <div class="purchase">
-                <!-- <select class="narrow">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                </select> -->
                 <button type="button" (click)="addToCart()">Add to Cart</button>
-                <!-- <button type="btn btn-primary btn-lg compare">Compare</button> -->
                 <qrcode [qrdata]="qrCodeValue" [width]="256" [errorCorrectionLevel]="'M'"></qrcode>
             </div>
         </div>
@@ -55,7 +30,7 @@
         <div class="description">{{productInfo?.description}}</div>
     </div>
     <div class="recommendations-container">
-        <h2 class="recom-title" *ngIf="itemBasedRecommendations.length > 0">Item based recommendations</h2>
+        <h2 class="recom-title" *ngIf="itemBasedRecommendations.length > 0">User based recommendations</h2>
         <app-item-carousel [products]="itemBasedRecommendations"
             *ngIf="itemBasedRecommendations.length > 0"></app-item-carousel>
         <h2 class="recom-title" *ngIf="contentBasedRecommendations.length > 0">Content based recommendations</h2>
@@ -63,7 +38,7 @@
             *ngIf="contentBasedRecommendations.length > 0"></app-item-carousel>
     </div>
     <div class="peek-div">
-        <h1>Take a peek at what you can find in this book</h1>
+        <h1>Another interpretation of the book cover</h1>
         <button class="btn btn-primary" (click)="textToImg()">Peek</button>
         <img [src]="'data:image/png;base64,'+base64Img" *ngIf="base64Img != ''">
     </div>

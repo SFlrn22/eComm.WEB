@@ -3,6 +3,7 @@ import { Product } from '../../core/models/Product';
 import { FavoriteService } from '../../core/services/favorite-service/favorite.service';
 import { AddToFavoritesRequest } from '../../core/models/AddToFavoritesRequest';
 import { ProductService } from '../../core/services/product-service/product.service';
+import { SnackbarService } from '../../core/services/snackbar-service/snackbar.service';
 
 @Component({
   selector: 'app-product-card',
@@ -18,10 +19,12 @@ export class ProductCardComponent implements OnInit {
 
   constructor(
     private favoriteService: FavoriteService,
-    private productService: ProductService
+    private productService: ProductService,
+    private snackbarService: SnackbarService
   ) {}
 
   ngOnInit(): void {
+    console.log(this.productDetails);
     this.defaultStars();
   }
 
@@ -66,6 +69,11 @@ export class ProductCardComponent implements OnInit {
       .subscribe((data) => {
         if (data.isSuccess == true) {
           this.productDetails.averageRating = count;
+          this.snackbarService.openSnackBar(
+            'Rated book with success',
+            'Close',
+            'success'
+          );
         }
       });
   }

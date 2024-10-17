@@ -16,7 +16,7 @@ export class ProductPageComponent implements OnInit {
   contentBasedRecommendations: Product[] = [];
   qrCodeValue: string = 'https://isbnsearch.org/isbn/';
   base64Img: string = '';
-
+  fillStarArray: boolean[] = [false, false, false, false, false];
   constructor(
     private activeRoute: ActivatedRoute,
     private productService: ProductService,
@@ -34,6 +34,7 @@ export class ProductPageComponent implements OnInit {
       };
       this.productService.getProducts(queryParams).subscribe((data: any) => {
         this.productInfo = data.data.productList[0];
+        this.defaultStars();
       });
 
       const queryParamsRec = {
@@ -52,6 +53,16 @@ export class ProductPageComponent implements OnInit {
           this.contentBasedRecommendations = data;
         });
     });
+  }
+
+  defaultStars() {
+    for (let i = 0; i < this.fillStarArray.length; i++) {
+      if (i < this.productInfo?.averageRating!) {
+        this.fillStarArray[i] = true;
+      } else {
+        this.fillStarArray[i] = false;
+      }
+    }
   }
 
   addToCart() {

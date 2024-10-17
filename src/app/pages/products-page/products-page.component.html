@@ -21,7 +21,7 @@
       <app-product-card [productDetails]="product" [isFavorite]="isFavorite(product)"></app-product-card>
     </div>
   </div>
-  <div class="pagination-container">
+  <div class="pagination-container" *ngIf="productList.length >= 10">
     <ul class="pagination pagination-md justify-content-center">
       <li class="page-item">
         <input type="button" class="btn btn-dark shadow-none" (click)="previous()" [disabled]="isDisabledPrev"

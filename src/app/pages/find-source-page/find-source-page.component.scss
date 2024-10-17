@@ -37,14 +37,20 @@ img {
   display: flex;
   flex-direction: column;
   overflow-y: scroll;
-  gap: 4px;
+  gap: 0.5rem;
   -ms-overflow-style: none;
   scrollbar-width: none;
   padding-bottom: 4rem;
+  padding-top: 1rem;
   align-self: center;
 }
 
 .result-div {
   display: flex;
   flex-direction: column;
+}
+
+.result-title {
+  font-size: 20px;
+  font-weight: bold;
 }

@@ -7,6 +7,7 @@
             <img src="{{imageSource?.imageUrl}}" alt="">
         </div>
         <div class="result-wrapper">
+            <span class="result-title" *ngIf="imageSource?.resultList != null">Sources</span>
             <div *ngFor="let result of imageSource?.resultList;" class="result-div">
                 <span class="title">{{result.title}}</span>
                 <a href="{{result.link}}" class="link">{{result.link}}</a>
